@@ -1,13 +1,12 @@
 import React from "react";
-import { SubNav } from "./SubNav";
+import { SubNav } from "./Navbar/SubNav";
 import { Navbar } from "./Navbar/Navbar";
-import { SlideHeader } from "./Slide/SlideHeader";
+import { SlideHeader } from "./SlideHeader";
 
 export const Header = () => {
   return (
     <header>
       <nav>
-        <SubNav></SubNav>
         <Navbar></Navbar>
         <SlideHeader></SlideHeader>
       </nav>
