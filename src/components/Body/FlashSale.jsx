@@ -18,10 +18,10 @@ export const FlashSale = () => {
       seconds = 0;
     }
 
-    document.querySelector(".countdown-d").innerHTML = days;
-    document.querySelector(".countdown-h").innerHTML = hours;
-    document.querySelector(".countdown-m").innerHTML = minutes;
-    document.querySelector(".countdown-s").innerHTML = seconds;
+    // document.querySelector(".countdown-d").innerHTML = days;
+    // document.querySelector(".countdown-h").innerHTML = hours;
+    // document.querySelector(".countdown-m").innerHTML = minutes;
+    // document.querySelector(".countdown-s").innerHTML = seconds;
   }, 1000);
 
   return (
@@ -103,7 +103,7 @@ const Silde = () => {
 
   return (
     <>
-      <div className="h-[250px] relative overflow-x-hidden m-3">
+      <div className="h-[250px] relative overflow-x-hidden mx-3 my-3">
         <div
           className="absolute  flex top-0 items-start justify-start ease-out duration-300"
           style={{ left: `${leftInc}px` }}

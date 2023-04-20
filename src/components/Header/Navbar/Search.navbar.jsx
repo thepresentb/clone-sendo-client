@@ -12,7 +12,7 @@ export const Search = () => {
   };
 
   return (
-    <div className="w-full flex m-2">
+    <div className="w-full flex mx-2 my-2">
       <div className="grow mr-1">
         <input
           className="h-10 w-full rounded p-5 text-sm focus-visible:outline-0"
