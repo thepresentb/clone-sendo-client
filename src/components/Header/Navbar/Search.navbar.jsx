@@ -1,5 +1,5 @@
 import React from "react";
-import { SEARCHTOP } from "../../../data";
+import { SEARCHTOP } from "../../../data/searchTop";
 
 export const Search = () => {
   const handlerOnfocus = (option) => {

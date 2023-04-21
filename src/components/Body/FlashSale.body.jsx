@@ -103,12 +103,12 @@ const Silde = () => {
 
   return (
     <>
-      <div className="h-[250px] relative overflow-x-hidden mx-3 my-3">
+      <div className="h-[250px] relative overflow-x-hidden mx-3 mb-3">
         <div
           className="absolute  flex top-0 items-start justify-start ease-out duration-300"
           style={{ left: `${leftInc}px` }}
         >
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -141,7 +141,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -174,7 +174,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -207,7 +207,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -240,7 +240,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -273,7 +273,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -306,7 +306,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -339,7 +339,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">
@@ -372,7 +372,7 @@ const Silde = () => {
               </div>
             </a>
           </div>
-          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-xl rounded">
+          <div className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded">
             <a>
               <div>
                 <div className="relative">

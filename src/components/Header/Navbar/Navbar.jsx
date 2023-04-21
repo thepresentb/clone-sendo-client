@@ -1,7 +1,8 @@
 import React from "react";
 import { Filter } from "./Filter.navbar";
 import { Search } from "./Search.navbar";
-import { SubNav } from "./SubNav";
+import { TopNav } from "./TopNav.navbar";
+import { SubNav } from "./subNav.navbar";
 
 export const Navbar = () => {
   // scroll hide subnav
@@ -11,8 +12,8 @@ export const Navbar = () => {
   });
 
   return (
-    <div className="navbar bg-red-600 fixed h-[115px] w-full z-20 top-0 left-0 ">
-      <SubNav></SubNav>
+    <div className="navbar bg-red-600 fixed h-[140px] w-full z-20 top-0 left-0 ">
+      <TopNav></TopNav>
       <div className="flex pt-1 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
         <div className="w-[120px] h-[48px] hover:opacity-80">
           <svg viewBox="0 0 87 48" xmlns="http://www.w3.org/2000/svg" className="w-[120px] h-[48px] cursor-pointer">
@@ -42,6 +43,7 @@ export const Navbar = () => {
           </div>
         </a>
       </div>
+      <SubNav></SubNav>
     </div>
   );
 };

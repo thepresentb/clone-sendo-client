@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FILTER } from "../../../data";
+import { FILTER } from "../../../data/filter";
 
 export const Filter = () => {
   const [filterData, setFilterData] = useState([]);

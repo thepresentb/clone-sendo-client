@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SubNav = () => {
+export const TopNav = () => {
   // hide qr menu
   const handleHoverQr = () => {
     document.getElementById("hide-qr").classList.toggle("hidden");

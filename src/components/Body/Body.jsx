@@ -1,12 +1,12 @@
 import React from "react";
-import { FlashSale } from "./FlashSale";
-import { TradeMark } from "./TradeMark";
-import { Utilities } from "./Utilities";
+import { FlashSale } from "./FlashSale.body";
+import { TradeMark } from "./TradeMark.body";
+import { Utilities } from "./Utilities.body";
 import { Products } from "./Products/Products";
 
 export const Body = () => {
   return (
-    <div className="h-[3000px] bg-gray-100 pt-4">
+    <div className=" bg-gray-100 pt-4">
       <FlashSale></FlashSale>
       <TradeMark></TradeMark>
       <Utilities></Utilities>

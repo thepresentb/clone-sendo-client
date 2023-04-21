@@ -1,7 +1,6 @@
 import React from "react";
-import { SubNav } from "./Navbar/SubNav";
 import { Navbar } from "./Navbar/Navbar";
-import { SlideHeader } from "./SlideHeader";
+import { SlideHeader } from "./Slide.header";
 
 export const Header = () => {
   return (
