@@ -15,9 +15,9 @@ export const Contact = () => {
                 <div className="mt-4 ">
                   {contactItem.detail.map((detailItem, index) => {
                     return (
-                      <a href="#" className="block text-xs opacity-70 my-2" key={index}>
+                      <div href="#" className="block text-xs opacity-70 my-2" key={index}>
                         {detailItem}
-                      </a>
+                      </div>
                     );
                   })}
                 </div>
@@ -25,9 +25,9 @@ export const Contact = () => {
                   <div className="flex flex-wrap justify-between">
                     {contactItem?.imgUrl.map((imgUrlItem, index) => {
                       return (
-                        <a href="#" className="w-[45%] mt-4 cursor-pointer">
+                        <div href="#" className="w-[45%] mt-4 cursor-pointer" key={index}>
                           <img className="w-full" src={imgUrlItem} />
-                        </a>
+                        </div>
                       );
                     })}
                   </div>

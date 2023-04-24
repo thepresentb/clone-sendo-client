@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { FILTER } from "../../../data/filter";
+import { useSelector } from "react-redux";
 
 export const Filter = () => {
-  const [filterData, setFilterData] = useState([]);
+  const [categoryDetail, setCategoryDetail] = useState([]);
+  const categoryList = useSelector((state) => state.category?.list);
+
   // hide filter
   const handleHoverFilter = (reset = false) => {
-    reset && setFilterData([]);
+    reset && setCategoryDetail([]);
     document.getElementById("hide-filter").classList.toggle("hidden");
   };
 
   // hide filter children
   const handleHoverFilterChildren = (list) => {
-    setFilterData(list);
+    setCategoryDetail(list);
     document.getElementById("hide-filter-children").classList.remove("hidden");
   };
   return (
@@ -31,16 +33,16 @@ export const Filter = () => {
           ></path>
         </svg>
       </div>
-      <div id="hide-filter" className="absolute top-[54px] flex w-fit bg-white shadow-lg rounded hidden">
-        <div className={`p-3 mx-2 ${filterData.length !== 0 && "border-r-2 border-gray-200"} overflow-y-scroll`}>
-          {FILTER.map((item, index) => {
+      <div id="hide-filter" className="absolute top-[54px] z-50 flex w-fit bg-white shadow-lg rounded hidden">
+        <div className={`p-3 mx-2 ${categoryDetail.length !== 0 && "border-r-2 border-gray-200"} overflow-y-scroll`}>
+          {categoryList?.map((item) => {
             return (
               <div
                 className="p-2 whitespace-nowrap flex hover:bg-red-100 hover:translate-x-1 rounded cursor-pointer"
-                key={index}
-                onMouseEnter={() => handleHoverFilterChildren(item.list)}
+                key={item.category._id}
+                onMouseEnter={() => handleHoverFilterChildren(item.detail)}
               >
-                <p className="grow">{item.name}</p>
+                <p className="grow">{item.category.name}</p>
                 <div className="ml-6">
                   <svg className="svg-icon w-6" viewBox="0 0 20 20">
                     <path
@@ -56,23 +58,23 @@ export const Filter = () => {
         </div>
         <div
           id="hide-filter-children"
-          className={`min-w-[30vw] ${filterData.length === 0 && "hidden"} overflow-y-scroll`}
+          className={`min-w-[30vw] ${categoryDetail.length === 0 && "hidden"} overflow-y-scroll`}
         >
-          <FilterItem filterData={filterData} />
+          <FilterItem categoryDetail={categoryDetail} />
         </div>
       </div>
     </div>
   );
 };
 
-const FilterItem = ({ filterData }) => {
+const FilterItem = ({ categoryDetail }) => {
   return (
     <div className="p-3 ml-2">
-      {filterData?.length > 0 &&
-        filterData.map((item) => {
+      {categoryDetail?.length > 0 &&
+        categoryDetail.map((item) => {
           return (
-            <div className="p-2 whitespace-nowrap flex hover:bg-gray-100 rounded cursor-pointer">
-              <p className="grow text-sm cursor-pointer">{item}</p>
+            <div className="p-2 whitespace-nowrap flex hover:bg-gray-100 rounded cursor-pointer" key={item._id}>
+              <p className="grow text-sm cursor-pointer">{item.name}</p>
             </div>
           );
         })}
