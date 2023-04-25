@@ -5,17 +5,18 @@ import { getPaginatedProducts } from "../../../redux/apiRequest/product.api";
 import { StringHelper } from "../../../utils/StringHelper";
 
 export const Products = () => {
-  const paginatedProducts = useSelector((state) => state?.product?.paginatedProducts?.paginatedProducts);
-  const cursor = useSelector((state) => state?.product?.paginatedProducts?.cursor);
-  console.log(paginatedProducts);
+  const paginatedProducts = useSelector((state) => state?.product?.paginatedProducts);
   const dispatch = useDispatch();
 
   const handleLoadMore = () => {
+    if (!paginatedProducts?.hasMore) return;
     getPaginatedProducts(
       dispatch,
       {
         filter: {
-          createdAt: cursor,
+          createdAt: {
+            $lt: paginatedProducts.cursor,
+          },
         },
         limit: 40,
         orderBy: {
@@ -29,7 +30,9 @@ export const Products = () => {
   useEffect(() => {
     getPaginatedProducts(dispatch, {
       filter: {
-        createdAt: "2023-04-23T11:40:12.251Z",
+        createdAt: {
+          $lt: "2023-04-23T11:40:12.251Z",
+        },
       },
       limit: 40,
       orderBy: {
@@ -40,8 +43,8 @@ export const Products = () => {
 
   return (
     <div className="flex flex-col items-center justify-center mt-4">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {paginatedProducts?.map((item) => {
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {paginatedProducts?.paginatedProducts?.map((item) => {
           // set sale status cua moi san pham
           let saleStatus = false;
           if (
@@ -51,12 +54,11 @@ export const Products = () => {
             new Date().toISOString() < item.saleId.endAt
           ) {
             saleStatus = true;
-            console.log(saleStatus);
           }
 
           return (
             <div
-              className="relative bg-white rounded w-[12.5rem] shadow-center product__item cursor-pointer"
+              className="relative bg-white rounded w-[175px] shadow-center product__item cursor-pointer md:w-[12.5rem] lg:w-[12.5rem] xl:w-[12.5rem]"
               key={item._id}
             >
               <div className="product__back" style={{ backgroundImage: `url('${item.imgUrl}')` }}></div>
@@ -112,7 +114,10 @@ export const Products = () => {
           );
         })}
       </div>
-      <div className="flex cursor-pointer" onClick={handleLoadMore}>
+      <div
+        className={`flex cursor-pointer ${!paginatedProducts.hasMore ? "cursor-not-allowed" : ""}`}
+        onClick={handleLoadMore}
+      >
         <div className="mx-auto bg-white py-3 px-40 mt-12 mb-20 rounded-md font-semibold">Xem thêm</div>
       </div>
     </div>

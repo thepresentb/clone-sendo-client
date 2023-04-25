@@ -10,7 +10,7 @@ export const TopNav = () => {
       <div className="flex grow">
         <div className="relative pr-8" onMouseEnter={handleHoverQr} onMouseLeave={handleHoverQr}>
           <div className="hover-opacity cursor-pointer hover:opacity-70">Tải ứng dụng</div>
-          <div className="absolute w-full h-5 top-[20px]"></div>
+          <div className="absolute w-full h-2 top-[20px]"></div>
           <div
             id="hide-qr"
             className="absolute z-30 w-[220px] bg-white flex items-center justify-center flex-col shadow-md pt-3 hidden"

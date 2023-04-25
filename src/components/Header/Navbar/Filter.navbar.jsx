@@ -42,7 +42,7 @@ export const Filter = () => {
                 key={item.category._id}
                 onMouseEnter={() => handleHoverFilterChildren(item.detail)}
               >
-                <p className="grow">{item.category.name}</p>
+                <p className="grow text-sm font-semibold">{item.category.name}</p>
                 <div className="ml-6">
                   <svg className="svg-icon w-6" viewBox="0 0 20 20">
                     <path

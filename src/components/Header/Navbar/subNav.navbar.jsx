@@ -3,16 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleSelectedCategoryId } from "../../../redux/slice/category.slice";
 
 export const SubNav = () => {
-  const categoryList = useSelector((state) => state.category?.list);
-  const selectedCategoryId = useSelector((state) => state.category?.selectedCategoryId);
+  const { list, selectedCategoryId, isCategoryPage } = useSelector((state) => state?.category);
 
   const dispatch = useDispatch();
 
   return (
-    <div className="xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
+    <div className={`xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto ${isCategoryPage ? "hidden" : ""}`}>
       <div className="w-full m-auto flex relative overflow-x-scroll">
         <div className="relative flex cursor-pointer">
-          {categoryList?.map((item) => {
+          {list?.map((item) => {
             return (
               <div
                 className={`w-[218px] h-[46px] text-center leading-[46px] hover:bg-red-500 text-white ${

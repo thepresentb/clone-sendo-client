@@ -11,8 +11,6 @@ const getPaginatedProducts = async (dispatch, filter, loadMore = false) => {
   if (loadMore) {
     return dispatch(loadMorePaginatedProducts(res.data.data));
   }
-  console.log("get data");
-  console.log(res.data.data);
   dispatch(addPaginatedProducts(res.data.data));
 };
 
