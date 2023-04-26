@@ -1,11 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { HideIcon } from "./HideIcon.filter";
 import { useState } from "react";
+import { setFilter } from "../../../redux/slice/category.slice";
 
 export const CategoryDetail = () => {
   const categoryList = useSelector((state) => state.category?.list);
+  const { filter } = useSelector((state) => state.category);
   const [isShow, setIsShow] = useState(true);
   const [showDetailId, setShowDetailId] = useState(null);
+  const dispatch = useDispatch();
+
+  const setFilterStore = (id) => {
+    let newFilter = JSON.parse(JSON.stringify(filter));
+    newFilter.categoryDetailId = id;
+    if (newFilter.createdAt) delete newFilter.createdAt;
+
+    dispatch(setFilter(newFilter));
+  };
 
   return (
     <div className=" border-b-[1px] border-gray-200">
@@ -29,7 +40,11 @@ export const CategoryDetail = () => {
               <div className={`text-sm mb-2 ${item.category._id === showDetailId ? "" : "hidden"}`}>
                 {item?.detail.map((itemDetail) => {
                   return (
-                    <div className="hover:bg-slate-200 px-1 rounded hover:font-medium truncate" key={itemDetail._id}>
+                    <div
+                      className="hover:bg-slate-200 px-1 rounded hover:font-medium truncate"
+                      key={itemDetail._id}
+                      onClick={() => setFilterStore(itemDetail._id)}
+                    >
                       {itemDetail.name}
                     </div>
                   );

@@ -5,7 +5,9 @@ const initialState = {
   selectedCategoryId: null,
   isCategoryPage: false,
   filter: {},
-  orderBy: {},
+  orderBy: {
+    createdAt: -1,
+  },
 };
 
 const categorySlice = createSlice({
@@ -14,7 +16,7 @@ const categorySlice = createSlice({
   reducers: {
     addCategoryList(state, action) {
       state.list = action.payload;
-      state.selectedCategoryId = action.payload[1].category._id;
+      state.selectedCategoryId = action.payload[2].category._id;
     },
 
     toggleSelectedCategoryId(state, action) {
@@ -24,7 +26,6 @@ const categorySlice = createSlice({
       state.isCategoryPage = action.payload;
     },
     setFilter(state, action) {
-      console.log(action.payload);
       state.filter = action.payload;
     },
     setOrderBy(state, action) {

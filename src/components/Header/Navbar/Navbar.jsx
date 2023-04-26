@@ -15,7 +15,7 @@ export const Navbar = () => {
   });
 
   return (
-    <div className={`navbar bg-red-600 fixed h-[140px] w-full z-20 top-0 left-0 ${isCategoryPage ? "h-[100px]" : ""}`}>
+    <div className={`navbar bg-red-600 fixed w-full z-20 top-0 left-0 ${isCategoryPage ? "h-[100px]" : "h-[140px]"}`}>
       <TopNav></TopNav>
       <div className="flex pt-1 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
         <a href="/" className="w-[120px] h-[48px] hover:opacity-80">

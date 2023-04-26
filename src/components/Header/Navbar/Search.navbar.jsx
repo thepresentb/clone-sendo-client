@@ -1,7 +1,14 @@
 import React from "react";
 import { SEARCHTOP } from "../../../data/searchTop";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "../../../redux/slice/category.slice";
+import { redirect, useNavigate } from "react-router-dom";
 
 export const Search = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { filter } = useSelector((state) => state?.category);
+
   const handlerOnfocus = (option) => {
     const searchHintElement = document.getElementById("search-hint");
     if (option == "out") {
@@ -11,17 +18,38 @@ export const Search = () => {
     }
   };
 
+  const handleSubmit = () => {
+    const inputElement = document.querySelector(".search-navbar");
+    dispatch(
+      setFilter(
+        // khi nguoi dung xoa tim kiem
+        inputElement.value.length <= 1
+          ? {}
+          : {
+              name: inputElement.value,
+            }
+      )
+    );
+    handlerOnfocus("out");
+    navigate("/category");
+  };
+
+  const handleKeydown = (event) => {
+    if (event.keyCode === 13) handleSubmit();
+  };
+
   return (
     <div className="w-full flex mx-2 my-2">
       <div className="grow mr-1">
         <input
-          className="h-10 w-full rounded p-5 text-sm focus-visible:outline-0"
+          className="search-navbar h-10 w-full rounded p-5 text-sm focus-visible:outline-0"
           placeholder="Tìm trên Sendo"
           autoComplete="off"
           type="search"
           inputMode="search"
           onFocus={() => handlerOnfocus("in")}
           onBlur={() => handlerOnfocus("out")}
+          onKeyDown={handleKeydown}
         ></input>
         <div id="search-hint" className="h-screen w-full hidden">
           <div className="h-3/6 w-full rounded p-3 pl-6 text-sm bg-white mt-1 shadow-2xl overflow-y-auto">
@@ -41,6 +69,7 @@ export const Search = () => {
         value="Submit"
         aria-label="button submit"
         className="h-10 w-10 rounded box-border font-bold outline-none bg-white hover:bg-gray-100"
+        onClick={handleSubmit}
       >
         <svg
           className="h-6 w-6 m-auto"

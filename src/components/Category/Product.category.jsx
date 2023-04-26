@@ -2,25 +2,50 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPaginatedProducts } from "../../redux/apiRequest/product.api";
 import { StringHelper } from "../../utils/StringHelper";
+import { setFilter } from "../../redux/slice/category.slice";
 
 export const Product = () => {
   const { paginatedProducts } = useSelector((state) => state?.product);
-  const filter = JSON.parse(localStorage.getItem("filter"));
+  const { filter, orderBy } = useSelector((state) => state?.category);
   const dispatch = useDispatch();
+
+  const handleLoadMore = () => {
+    if (!paginatedProducts?.hasMore) return;
+    let newFilter = JSON.parse(JSON.stringify(filter));
+    newFilter.createdAt = {
+      $lt: paginatedProducts.cursor,
+    };
+    getPaginatedProducts(
+      dispatch,
+      {
+        filter: newFilter,
+        limit: 36,
+        orderBy,
+      },
+      // set true to loadmore
+      true
+    );
+  };
 
   useEffect(() => {
     getPaginatedProducts(dispatch, {
       filter: filter ? filter : {},
-      limit: 40,
-      orderBy: {
-        // createdAt: -1,
-        // rate: -1,
-      },
+      limit: 36,
+      orderBy,
     });
-  }, []);
+  }, [orderBy, filter]);
 
   return (
     <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+      {paginatedProducts?.paginatedProducts?.length === 0 ? (
+        <div className="col-span-full lg:col-span-3 xl:col-span-4">
+          <div className="h-[500px] lg:w-[650px] xl:w-[850px] flex text-center items-center">
+            <span className="text-md font-bold m-auto">Không có sản phẩm trong khoảng tìm kiếm</span>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
       {paginatedProducts?.paginatedProducts?.map((item) => {
         // set sale status cua moi san pham
         let saleStatus = false;
@@ -88,6 +113,16 @@ export const Product = () => {
           </div>
         );
       })}
+      <div
+        className={`${
+          paginatedProducts?.paginatedProducts?.length === 0 ? "hidden" : ""
+        } flex col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-4 ${
+          !paginatedProducts.hasMore ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+        }`}
+        onClick={handleLoadMore}
+      >
+        <div className="mx-auto bg-white py-3 px-40 mt-12 mb-20 rounded-md font-semibold">Xem thêm</div>
+      </div>
     </div>
   );
 };

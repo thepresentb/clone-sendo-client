@@ -11,11 +11,11 @@ export const Filter = () => {
   window.addEventListener("scroll", () => {
     let bodyHeight = document.querySelector("body")?.offsetHeight;
     let footerHeight = document.getElementById("footer")?.offsetHeight;
+    const filterCateElementStyle = document.querySelector(".filter-cate").style;
     let scroll = Math.max(80, 185 - window.scrollY);
     if (bodyHeight - window.innerHeight - window.scrollY <= footerHeight) {
       scroll += bodyHeight - window.innerHeight - window.scrollY - footerHeight;
     }
-    const filterCateElementStyle = document.querySelector(".filter-cate").style;
     if (window.scrollY === 0) {
       filterCateElementStyle.position = "absolute";
       filterCateElementStyle.top = 0;
@@ -31,8 +31,8 @@ export const Filter = () => {
     >
       <CategoryDetail />
       <Price />
-      <Delivery />
       <Installment />
+      <Delivery />
       <Rate />
     </div>
   );

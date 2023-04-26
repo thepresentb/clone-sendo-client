@@ -15,4 +15,8 @@
   .shadow-center {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 -2px 2px 0 rgba(0, 0, 0, 0.04);
   }
+
+  .bg-color-flashSale {
+    background-image: linear-gradient(to right, rgb(238, 108, 14), rgb(255, 198, 0));
+  }
 }

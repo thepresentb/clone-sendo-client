@@ -28,35 +28,35 @@ export const FlashSale = () => {
   }, 1000);
 
   return (
-    <div className="mx-auto relative bg-white rounded-md xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px]">
-      <div className="flex p-4">
+    <div className=" relative bg-color-flashSale max-w-[374px] mx-auto rounded-md xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px]">
+      <div className="flex pt-4 px-4 sm:p-4">
         <div className="flex grow">
           <div className="mt-1">
             <img
-              className="w-[130px]"
+              className="w-[90px] sm:w-[130px]"
               src="https://web-static.scdn.vn/sendo-buyers-flash-sale-widget/6d27bf93-web/media/flashsale-icon.6d0b98fffda3d7d526b45c53de367840.svg"
             />
           </div>
           <div className="flex text-center ml-2 font-bold leading-8">
-            <div className="m-1 h-7 w-7 leading-7 rounded text-white bg-slate-950">
+            <div className="m-1 text-[14px] h-5 w-5 leading-5 sm:h-7 sm:w-7 sm:leading-7 rounded text-white bg-slate-950">
               <span className="font-mono">
                 <span className="countdown-d">00</span>
               </span>
             </div>
             :
-            <div className="m-1 h-7 w-7 leading-7 rounded text-white bg-slate-950">
+            <div className="m-1 text-[14px] h-5 w-5 leading-5 sm:h-7 sm:w-7 sm:leading-7 rounded text-white bg-slate-950">
               <span className="font-mono">
                 <span className="countdown-h">00</span>
               </span>
             </div>
             :
-            <div className="m-1 h-7 w-7 leading-7 rounded text-white bg-slate-950">
+            <div className="m-1 text-[14px] h-5 w-5 leading-5 sm:h-7 sm:w-7 sm:leading-7 rounded text-white bg-slate-950">
               <span className="font-mono">
                 <span className="countdown-m">00</span>
               </span>
             </div>
             :
-            <div className="m-1 h-7 w-7 leading-7 rounded text-white bg-slate-950">
+            <div className="m-1 text-[14px] h-5 w-5 leading-5 sm:h-7 sm:w-7 sm:leading-7 rounded text-white bg-slate-950">
               <span className="font-mono">
                 <span className="countdown-s">00</span>
               </span>
@@ -64,7 +64,7 @@ export const FlashSale = () => {
           </div>
         </div>
         <div>
-          <a className="hover:opacity-50" href="#">
+          <a className="hover:opacity-70 text-[13px] text-white sm:text-base" href="#">
             Xem tất cả
           </a>
         </div>
@@ -110,7 +110,7 @@ const Silde = () => {
 
   return (
     <>
-      <div className="h-[250px] relative overflow-x-hidden mx-3 mb-3">
+      <div className="h-[210px] sm:h-[250px] relative overflow-x-hidden mx-3 mb-3">
         <div
           className="absolute  flex top-0 items-start justify-start ease-out duration-300"
           style={{ left: `${leftInc}px` }}
@@ -118,7 +118,7 @@ const Silde = () => {
           {flashSaleList?.map((item) => {
             return (
               <div
-                className="slider-item cursor-pointer hover:scale-105 w-[144px] h-[206px] mx-[5px] my-4 shadow-center rounded"
+                className="slider-item cursor-pointer hover:scale-105 w-[106px] bg-white sm:w-[144px] h-[170px] sm:h-[206px] mx-[5px] my-4 shadow-center rounded"
                 key={item._id}
               >
                 <a>
@@ -141,14 +141,16 @@ const Silde = () => {
                       </div>
                     </div>
                     <div className="m-[11px] mt-3">
-                      <div className="text-end text-base font-bold text-red-500">
+                      <div className="text-end text-[14px] sm:text-base font-bold text-red-500">
                         {StringHelper.toPrice(Math.floor((item.price * (100 - item.saleId.salePercent)) / 100))}đ
                       </div>
                       <div className="flex justify-end">
-                        <div className="text-end text-xs line-through opacity-40">
+                        <div className="text-end text-[11px] sm:text-xs line-through opacity-40">
                           {StringHelper.toPrice(item.price)}
                         </div>
-                        <div className="ml-2 text-end text-xs text-red-500">-{item.saleId.salePercent}%</div>
+                        <div className="ml-2 text-end text-[11px] sm:text-xs text-red-500">
+                          -{item.saleId.salePercent}%
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -158,11 +160,11 @@ const Silde = () => {
           })}
         </div>
       </div>
-      <div className="slider__controls top-[170px] xl:w-[1100px] lg:w-[900px] md:w-[750px]">
-        <button type="button" className="prev">
+      <div className="slider__controls hidden sm:flex top-[150px] xl:w-[1100px] lg:w-[900px] md:w-[750px]">
+        <button type="button" className="prev shadow-center">
           <div className="btn--icon"></div>
         </button>
-        <button type="button" className="next">
+        <button type="button" className="next shadow-center">
           <div className="btn--icon"></div>
         </button>
       </div>

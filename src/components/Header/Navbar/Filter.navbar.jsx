@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setFilter } from "../../../redux/slice/category.slice";
 
 export const Filter = () => {
   const [categoryDetail, setCategoryDetail] = useState([]);
@@ -68,14 +70,29 @@ export const Filter = () => {
 };
 
 const FilterItem = ({ categoryDetail }) => {
+  const dispatch = useDispatch();
+  const { filter } = useSelector((state) => state?.category);
+
+  const setFilterStore = (id) => {
+    let newFilter = JSON.parse(JSON.stringify(filter));
+    newFilter.categoryDetailId = id;
+
+    dispatch(setFilter(newFilter));
+  };
+
   return (
     <div className="p-3 ml-2">
       {categoryDetail?.length > 0 &&
         categoryDetail.map((item) => {
           return (
-            <div className="p-2 whitespace-nowrap flex hover:bg-gray-100 rounded cursor-pointer" key={item._id}>
+            <Link
+              to="/category"
+              className="p-2 whitespace-nowrap flex hover:bg-gray-100 rounded cursor-pointer"
+              key={item._id}
+              onClick={() => setFilterStore(item._id)}
+            >
               <p className="grow text-sm cursor-pointer">{item.name}</p>
-            </div>
+            </Link>
           );
         })}
     </div>
