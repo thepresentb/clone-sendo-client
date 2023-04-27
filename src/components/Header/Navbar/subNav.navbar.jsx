@@ -8,13 +8,17 @@ export const SubNav = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className={`xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto ${isCategoryPage ? "hidden" : ""}`}>
+    <div
+      className={`xl:max-w-[1100px] mt-[13px] sm:mt-0 lg:max-w-[900px] md:max-w-[750px] mx-auto ${
+        isCategoryPage ? "hidden" : ""
+      }`}
+    >
       <div className="w-full m-auto flex relative overflow-x-scroll">
         <div className="relative flex cursor-pointer">
           {list?.map((item) => {
             return (
               <div
-                className={`w-[218px] h-[46px] text-center leading-[46px] hover:bg-red-500 text-white ${
+                className={`w-[130px] sm:text-[1rem] sm:truncate whitespace-nowrap px-2 sm:w-[218px] h-[46px] text-center leading-[46px] hover:bg-red-500 text-white ${
                   selectedCategoryId === item.category._id ? "font-bold border-b-4 border-white" : ""
                 }`}
                 onClick={() => dispatch(toggleSelectedCategoryId(item.category._id))}

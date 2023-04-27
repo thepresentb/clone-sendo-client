@@ -6,7 +6,7 @@ export const TopNav = () => {
     document.getElementById("hide-qr").classList.toggle("hidden");
   };
   return (
-    <div className="flex xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto leading-8 font-medium text-white text-sm">
+    <div className="hidden sm:flex xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto leading-8 font-medium text-white text-sm">
       <div className="flex grow">
         <div className="relative pr-8" onMouseEnter={handleHoverQr} onMouseLeave={handleHoverQr}>
           <div className="hover-opacity cursor-pointer hover:opacity-70">Tải ứng dụng</div>

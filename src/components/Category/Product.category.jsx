@@ -36,7 +36,7 @@ export const Product = () => {
   }, [orderBy, filter]);
 
   return (
-    <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-2 sm:gap-6 gap-x-0 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
       {paginatedProducts?.paginatedProducts?.length === 0 ? (
         <div className="col-span-full lg:col-span-3 xl:col-span-4">
           <div className="h-[500px] lg:w-[650px] xl:w-[850px] flex text-center items-center">
@@ -60,7 +60,7 @@ export const Product = () => {
 
         return (
           <div
-            className="relative bg-white rounded w-[175px] shadow-center product__item cursor-pointer md:w-[12.5rem] lg:w-[12.5rem] xl:w-[12.5rem]"
+            className="relative mx-auto bg-white rounded w-[175px] shadow-center product__item cursor-pointer md:w-[12.5rem]"
             key={item._id}
           >
             <div className="product__back" style={{ backgroundImage: `url('${item.imgUrl}')` }}></div>

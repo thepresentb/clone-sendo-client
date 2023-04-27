@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setFilter } from "../../../redux/slice/category.slice";
 
 export const Filter = () => {
   const [categoryDetail, setCategoryDetail] = useState([]);
   const categoryList = useSelector((state) => state.category?.list);
+  const navigate = useNavigate();
 
   // hide filter
   const handleHoverFilter = (reset = false) => {
-    reset && setCategoryDetail([]);
-    document.getElementById("hide-filter").classList.toggle("hidden");
+    if (window.innerWidth >= 640) {
+      reset && setCategoryDetail([]);
+      document.getElementById("hide-filter").classList.toggle("hidden");
+    } else {
+      navigate("/category");
+    }
   };
 
   // hide filter children
@@ -20,7 +25,7 @@ export const Filter = () => {
   };
   return (
     <div className="relative" onMouseEnter={handleHoverFilter} onMouseLeave={() => handleHoverFilter(true)}>
-      <div className="mt-4 ml-10 mr-4 cursor-pointer hover:opacity-80">
+      <div className="sm:mt-4 mt-[14px] sm:ml-10 mx-1 sm:mr-4 cursor-pointer hover:opacity-80">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

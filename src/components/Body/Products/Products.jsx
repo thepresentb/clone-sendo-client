@@ -43,7 +43,7 @@ export const Products = () => {
 
   return (
     <div className="flex flex-col items-center justify-center mt-4">
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-2 sm:gap-6 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {paginatedProducts?.paginatedProducts?.map((item) => {
           // set sale status cua moi san pham
           let saleStatus = false;
@@ -58,7 +58,7 @@ export const Products = () => {
 
           return (
             <div
-              className="relative bg-white rounded w-[175px] shadow-center product__item cursor-pointer md:w-[12.5rem] lg:w-[12.5rem] xl:w-[12.5rem]"
+              className="relative bg-white rounded w-[175px] shadow-center product__item cursor-pointer md:w-[12.5rem]"
               key={item._id}
             >
               <div className="product__back" style={{ backgroundImage: `url('${item.imgUrl}')` }}></div>
