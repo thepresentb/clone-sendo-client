@@ -28,7 +28,7 @@ export const Slide = () => {
   };
 
   return (
-    <div className="h-12 overflow-x-auto border-b-2 border-gray-300">
+    <div className="hideScroll h-12 border-b-2 border-gray-300">
       <div className="flex h-11  w-max ">
         {categoryDetail?.map((item) => {
           return (

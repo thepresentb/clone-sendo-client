@@ -1,9 +1,11 @@
-export const HideIcon = ({ iconWidth, isShow }) => {
+export const HideIcon = ({ iconWidth, isShow, bgColor, isDown }) => {
   return (
     <div className="flex">
-      <div className={`m-auto ${isShow ? "" : "hidden"}`}>
+      <div className={`m-auto ${isShow ? "" : "hidden"} ${isDown ? "hidden" : ""}`}>
         <svg
-          className={`svg-icon bg-white ${iconWidth === "sm" ? "w-[22px] p-1" : "w-6 p-1"} cursor-pointer rounded`}
+          className={`svg-icon ${bgColor ? bgColor : "bg-white"} ${
+            iconWidth === "sm" ? "w-[22px] p-1" : "w-6 p-1"
+          } cursor-pointer rounded`}
           viewBox="0 0 20 20"
         >
           <path
@@ -12,15 +14,32 @@ export const HideIcon = ({ iconWidth, isShow }) => {
           ></path>
         </svg>
       </div>
-      <div className={`m-auto ${isShow ? "hidden" : ""}`}>
+      <div className={`m-auto ${isShow ? "hidden" : ""} ${isDown ? "hidden" : ""}`}>
         <svg
-          className={`svg-icon bg-white ${iconWidth === "sm" ? "w-[22px] p-1" : "w-6 p-1"} cursor-pointer rounded`}
+          className={`svg-icon ${bgColor ? bgColor : "bg-white"} ${
+            iconWidth === "sm" ? "w-[22px] p-1" : "w-6 p-1"
+          } cursor-pointer rounded`}
           viewBox="0 0 20 20"
         >
           <path
             fill="fff"
             d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"
           ></path>
+        </svg>
+      </div>
+      <div className={`m-auto ${isDown ? "" : "hidden"} w-6 p-1 mt-[2px] mr-[2px] cursor-pointer rounded`}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#000000"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M6 9l6 6 6-6" />
         </svg>
       </div>
     </div>

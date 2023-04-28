@@ -4,6 +4,7 @@ import { Body } from "./components/Body/Body";
 import { Footer } from "./components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import { Category } from "./components/Category/Category";
+import { Info } from "./components/Info/Info";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Body />} />
         <Route path="category" element={<Category />} />
+        <Route path="/product_info" element={<Info />} />
       </Routes>
       <Footer />
     </div>

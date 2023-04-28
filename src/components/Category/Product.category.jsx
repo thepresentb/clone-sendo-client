@@ -3,11 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPaginatedProducts } from "../../redux/apiRequest/product.api";
 import { StringHelper } from "../../utils/StringHelper";
 import { setFilter } from "../../redux/slice/category.slice";
+import { useNavigate } from "react-router-dom";
 
 export const Product = () => {
   const { paginatedProducts } = useSelector((state) => state?.product);
   const { filter, orderBy } = useSelector((state) => state?.category);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClickProduct = (id) => {
+    localStorage.setItem("productId", id);
+    navigate("/product_info");
+  };
 
   const handleLoadMore = () => {
     if (!paginatedProducts?.hasMore) return;
@@ -62,6 +69,7 @@ export const Product = () => {
           <div
             className="relative mx-auto bg-white rounded w-[175px] shadow-center product__item cursor-pointer md:w-[12.5rem]"
             key={item._id}
+            onClick={() => handleClickProduct(item._id)}
           >
             <div className="product__back" style={{ backgroundImage: `url('${item.imgUrl}')` }}></div>
             <div className="product__name">{item.name}</div>
@@ -115,13 +123,15 @@ export const Product = () => {
       })}
       <div
         className={`${
-          paginatedProducts?.paginatedProducts?.length === 0 ? "hidden" : ""
-        } flex col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-4 ${
+          paginatedProducts?.paginatedProducts?.length === 0 ? "hidden" : "flex"
+        }  col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-4 ${
           !paginatedProducts.hasMore ? "cursor-not-allowed opacity-50" : "cursor-pointer"
         }`}
         onClick={handleLoadMore}
       >
-        <div className="mx-auto bg-white py-3 px-40 mt-12 mb-20 rounded-md font-semibold">Xem thêm</div>
+        <div className="mx-auto bg-white py-3 px-20 sm:px-40 mt-5 mb-12 sm:mt-12 sm:mb-20 rounded-md font-semibold">
+          Xem thêm
+        </div>
       </div>
     </div>
   );

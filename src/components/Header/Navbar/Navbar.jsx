@@ -8,6 +8,7 @@ import { SearchMobile } from "./SearchMobile.filter";
 
 export const Navbar = () => {
   const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
+  const { selectedProduct } = useSelector((state) => state.product);
 
   // scroll handler
   window.addEventListener("scroll", () => {
@@ -24,7 +25,7 @@ export const Navbar = () => {
   return (
     <div
       className={`navbar bg-red-600 fixed w-full z-20 top-0 left-0 ${
-        isCategoryPage ? "sm:h-[100px] h-[70px]" : "sm:h-[138px] h-[160px]"
+        isCategoryPage || selectedProduct ? "sm:h-[100px] h-[70px]" : "sm:h-[138px] h-[160px]"
       }`}
     >
       <TopNav></TopNav>

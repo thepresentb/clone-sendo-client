@@ -4,17 +4,16 @@ import { setFilter } from "../../redux/slice/category.slice";
 import { Link, redirect } from "react-router-dom";
 
 export const SlideHeader = () => {
-  const categoryList = useSelector((state) => state.category?.list);
-  const selectedCategoryId = useSelector((state) => state.category?.selectedCategoryId);
-  const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
+  const { list, selectedCategoryId, isCategoryPage } = useSelector((state) => state.category);
+  const { selectedProduct } = useSelector((state) => state.product);
 
   return (
     <div
       className={`flex flex-col sm:mt-[140px] mt-[180px] mb-8 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] sm:mx-auto ${
-        isCategoryPage ? "hidden" : ""
-      }`}
+        isCategoryPage || selectedCategoryId ? "hidden" : ""
+      } `}
     >
-      {categoryList.map((item) => {
+      {list.map((item) => {
         return (
           <div
             className={`${

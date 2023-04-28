@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../assets/slide.css";
+import "../../assets/css/slide.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getFlashSaleList } from "../../redux/apiRequest/product.api";
 import { StringHelper } from "../../utils/StringHelper";

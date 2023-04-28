@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../assets/slide.css";
+import "../../assets/css/slide.css";
 import { BODYSLIDE } from "../../data/bodySlide";
 
 export const TradeMark = () => {
@@ -36,7 +36,7 @@ export const TradeMark = () => {
 const Silde = () => {
   return (
     <>
-      <div className="h-[230px] sm:h-[290px] w-[94vw] sm:w-[94%] m-auto flex relative overflow-x-scroll mt-4">
+      <div className="h-[230px] sm:h-[290px] w-[94vw] sm:w-[94%] m-auto flex relative hideScroll mt-4">
         {BODYSLIDE.map((item, index) => {
           return (
             <div className="relative top-3 h-[190px] sm:h-[240px] rounded-lg mx-3 shadow-center" key={index}>

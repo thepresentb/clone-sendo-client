@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../Body/Products/css/products.css";
+import "../../assets/css/products.css";
 import { setIsCategoryPage, setOrderBy } from "../../redux/slice/category.slice";
 import { Nav } from "./Nav.category";
 import { Product } from "./Product.category";

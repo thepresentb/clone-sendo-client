@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   flashSale: [],
+  selectedProduct: null,
   paginatedProducts: {},
 };
 
@@ -23,9 +24,13 @@ const productSlice = createSlice({
         ...action.payload.paginatedProducts,
       ];
     },
+    toggleSelectedProduct(state, action) {
+      state.selectedProduct = action.payload;
+    },
   },
 });
 
-export const { addFlashSaleList, addPaginatedProducts, loadMorePaginatedProducts } = productSlice.actions;
+export const { addFlashSaleList, addPaginatedProducts, loadMorePaginatedProducts, toggleSelectedProduct } =
+  productSlice.actions;
 
 export default productSlice.reducer;

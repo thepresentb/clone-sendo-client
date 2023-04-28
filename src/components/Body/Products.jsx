@@ -1,12 +1,19 @@
 import React, { useEffect } from "react";
-import "./css/products.css";
+import "../../assets/css/products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getPaginatedProducts } from "../../../redux/apiRequest/product.api";
-import { StringHelper } from "../../../utils/StringHelper";
+import { getPaginatedProducts } from "../../redux/apiRequest/product.api";
+import { StringHelper } from "../../utils/StringHelper";
+import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
   const paginatedProducts = useSelector((state) => state?.product?.paginatedProducts);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClickProduct = (id) => {
+    localStorage.setItem("productId", id);
+    navigate("/product_info");
+  };
 
   const handleLoadMore = () => {
     if (!paginatedProducts?.hasMore) return;
@@ -60,6 +67,7 @@ export const Products = () => {
             <div
               className="relative bg-white rounded w-[175px] shadow-center product__item cursor-pointer md:w-[12.5rem]"
               key={item._id}
+              onClick={() => handleClickProduct(item._id)}
             >
               <div className="product__back" style={{ backgroundImage: `url('${item.imgUrl}')` }}></div>
               <div className="product__name">{item.name}</div>

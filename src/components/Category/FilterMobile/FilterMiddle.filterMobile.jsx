@@ -45,7 +45,7 @@ const Modal = () => {
       </div>
       {showModal ? (
         <>
-          <div className=" b-0 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed top-[100px] inset-0 z-50 outline-none focus:outline-none h-fit">
+          <div className=" b-0 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed top-0 inset-0 z-50 outline-none focus:outline-none h-fit">
             <div className="relative w-full my-6 mx-auto">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
@@ -145,7 +145,7 @@ const SortMobile = () => {
                     <span>X</span>
                   </button>
                 </div>
-                <div className="relative p-6 flex-auto">
+                <div className="relative p-4 flex-auto">
                   <div className={`mx-4 pb-2`}>
                     {categoryList?.map((item) => {
                       return (
@@ -156,7 +156,7 @@ const SortMobile = () => {
                               setShowDetailId(item.category._id === showDetailId ? null : item.category._id)
                             }
                           >
-                            <span className="overflow-x-auto whitespace-nowrap grow my-2 text-base font-semibold truncate">
+                            <span className="overflow-x-auto whitespace-nowrap grow my-3 text-base font-semibold truncate">
                               {item.category.name}
                             </span>
                             <HideIcon iconWidth={"sm"} isShow={item.category._id === showDetailId} />
@@ -165,7 +165,7 @@ const SortMobile = () => {
                             {item?.detail.map((itemDetail) => {
                               return (
                                 <div
-                                  className="hover:bg-slate-200 px-1 my-1 rounded hover:font-medium truncate"
+                                  className="hover:bg-slate-200 px-1 my-2 rounded hover:font-medium truncate"
                                   key={itemDetail._id}
                                   onClick={() => setFilterStore(itemDetail._id)}
                                 >

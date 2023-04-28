@@ -76,13 +76,13 @@ export const Filter = () => {
 
 const FilterItem = ({ categoryDetail }) => {
   const dispatch = useDispatch();
-  const { filter } = useSelector((state) => state?.category);
 
   const setFilterStore = (id) => {
-    let newFilter = JSON.parse(JSON.stringify(filter));
-    newFilter.categoryDetailId = id;
-
-    dispatch(setFilter(newFilter));
+    dispatch(
+      setFilter({
+        categoryDetailId: id,
+      })
+    );
   };
 
   return (

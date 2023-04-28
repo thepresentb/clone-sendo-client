@@ -11,7 +11,11 @@ export const Delivery = () => {
 
   const setFilterStore = (value) => {
     let newFilter = JSON.parse(JSON.stringify(filter));
-    newFilter.isExpressDelivery = value;
+    if (value) {
+      newFilter.isExpressDelivery = value;
+    } else {
+      delete newFilter?.isExpressDelivery;
+    }
 
     dispatch(setFilter(newFilter));
   };
