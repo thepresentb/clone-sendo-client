@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/css/slide.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getFlashSaleList } from "../../redux/apiRequest/product.api";
+import { productApi } from "../../redux/apiRequest/product.api";
 import { StringHelper } from "../../utils/StringHelper";
 
 export const FlashSale = () => {
@@ -80,7 +80,7 @@ const Silde = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getFlashSaleList(dispatch);
+    productApi.getFlashSaleList(dispatch);
   }, []);
 
   // slide controls

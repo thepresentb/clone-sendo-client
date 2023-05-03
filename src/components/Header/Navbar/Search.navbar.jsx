@@ -51,7 +51,7 @@ export const Search = () => {
           onBlur={() => handlerOnfocus("out")}
           onKeyDown={handleKeydown}
         ></input>
-        <div id="search-hint" className="h-screen w-full hidden">
+        <div id="search-hint" className="h-screen w-full hidden relative z-50">
           <div className="h-3/6 w-full rounded p-3 pl-6 text-sm bg-white mt-1 shadow-2xl overflow-y-auto">
             <div className="p-2 font-semibold opacity-75">Xu hướng tìm kiếm</div>
             {SEARCHTOP.map((item, index) => {

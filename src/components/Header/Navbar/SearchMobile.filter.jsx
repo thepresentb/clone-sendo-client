@@ -1,10 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toggleAuthenState } from "../../../redux/slice/user.slice";
 
 export const SearchMobile = () => {
   const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleClickBag = () => {
+    if (!user) dispatch(toggleAuthenState("login"));
+  };
 
   return (
     <div className="sm:hidden flex">
@@ -28,7 +35,12 @@ export const SearchMobile = () => {
         // onBlur={() => handlerOnfocus("out")}
         // onKeyDown={handleKeydown}
       ></input>
-      <a aria-label="tote bag" href="#" className={`mt-[21px] mr-[14px] sm:mx-16 ${isCategoryPage ? "" : "hidden"}`}>
+      <div
+        aria-label="tote bag"
+        href="#"
+        className={`mt-[21px] mr-[14px] sm:mx-16 ${isCategoryPage ? "" : "hidden"}`}
+        onClick={handleClickBag}
+      >
         <div className="hover:opacity-80">
           <svg
             className="h-7 w-7"
@@ -44,7 +56,7 @@ export const SearchMobile = () => {
             ></path>
           </svg>
         </div>
-      </a>
+      </div>
     </div>
   );
 };

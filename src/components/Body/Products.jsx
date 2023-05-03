@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../../assets/css/products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getPaginatedProducts } from "../../redux/apiRequest/product.api";
+import { productApi } from "../../redux/apiRequest/product.api";
 import { StringHelper } from "../../utils/StringHelper";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ export const Products = () => {
 
   const handleLoadMore = () => {
     if (!paginatedProducts?.hasMore) return;
-    getPaginatedProducts(
+    productApi.getPaginatedProducts(
       dispatch,
       {
         filter: {
@@ -35,7 +35,7 @@ export const Products = () => {
   };
 
   useEffect(() => {
-    getPaginatedProducts(dispatch, {
+    productApi.getPaginatedProducts(dispatch, {
       filter: {
         createdAt: {
           $lt: "2023-04-23T11:40:12.251Z",

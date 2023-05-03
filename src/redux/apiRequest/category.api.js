@@ -1,9 +1,9 @@
-import { baseAxios } from "../baseAxios";
+import { baseAxios } from "./baseAxios";
 import { addCategoryList } from "../slice/category.slice";
 
-const getCategoryList = async (dispatch) => {
-  const res = await baseAxios.get("categories");
-  if (res.data.statusCode === 200) dispatch(addCategoryList(res.data.data));
+export const categoryApi = {
+  async getCategoryList(dispatch) {
+    const res = await baseAxios.get("categories");
+    if (res.data.statusCode === 200) dispatch(addCategoryList(res.data.data));
+  },
 };
-
-export { getCategoryList };

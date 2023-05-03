@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { FlashSale } from "./FlashSale.body";
-import { TradeMark } from "./Trademark.body";
 import { Utilities } from "./Utilities.body";
 import { Products } from "./Products";
 import { useDispatch } from "react-redux";
 import { setIsCategoryPage } from "../../redux/slice/category.slice";
+import { TradeMark } from "./TradeMark.body";
 
 export const Body = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPaginatedProducts } from "../../redux/apiRequest/product.api";
+import { productApi } from "../../redux/apiRequest/product.api";
 import { StringHelper } from "../../utils/StringHelper";
 import { setFilter } from "../../redux/slice/category.slice";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ export const Product = () => {
     newFilter.createdAt = {
       $lt: paginatedProducts.cursor,
     };
-    getPaginatedProducts(
+    productApi.getPaginatedProducts(
       dispatch,
       {
         filter: newFilter,
@@ -35,7 +35,7 @@ export const Product = () => {
   };
 
   useEffect(() => {
-    getPaginatedProducts(dispatch, {
+    productApi.getPaginatedProducts(dispatch, {
       filter: filter ? filter : {},
       limit: 36,
       orderBy,

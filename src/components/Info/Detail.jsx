@@ -1,6 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { StringHelper } from "../../utils/StringHelper";
+import { toggleAuthenState } from "../../redux/slice/user.slice";
 
 export const Detail = () => {
   const { selectedProduct } = useSelector((state) => state.product);
@@ -54,7 +55,18 @@ const TopInfo = () => {
 };
 
 const MiddleInfo = () => {
+  const [quantity, setQuantity] = useState(1);
   const { selectedProduct } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleAddToBag = () => {
+    if (!user) dispatch(toggleAuthenState("login"));
+  };
+
+  const handleBuy = () => {
+    if (!user) dispatch(toggleAuthenState("login"));
+  };
 
   return (
     <div className="mt-8 mb-10 border-t-2 border-stale-300">
@@ -85,19 +97,40 @@ const MiddleInfo = () => {
       <div className="flex text-sm text-center mt-2">
         <span className="opacity-50 leading-8">Chọn số lượng :</span>
         <div className="flex  mx-4">
-          <div className="h-8 w-8 text-[40px]  text-center leading-7 rounded bg-slate-200 opacity-50 cursor-pointer">
+          <div
+            className={`h-8 w-8 text-[40px]  text-center leading-7 rounded bg-slate-200 opacity-50 ${
+              quantity > 1 ? "cursor-pointer" : "cursor-not-allowed"
+            } `}
+            onClick={() => {
+              if (quantity > 1) setQuantity((prev) => --prev);
+            }}
+          >
             -
           </div>
-          <div className="h-8 w-12 text-center leading-8 mx-2 border-[1px] rounded border-stale-500">5</div>
-          <div className="h-8 w-8 text-[24px]  text-center leading-8 rounded bg-slate-200 opacity-50 cursor-pointer">
+          <div className="h-8 w-12 text-center leading-8 mx-2 border-[1px] rounded border-stale-500">{quantity}</div>
+          <div
+            className={`h-8 w-8 text-[24px]  text-center leading-8 rounded bg-slate-200 opacity-50 cursor-pointer ${
+              quantity < selectedProduct.quantity ? "cursor-pointer" : "cursor-not-allowed"
+            }`}
+            onClick={() => {
+              if (quantity < selectedProduct.quantity) setQuantity((prev) => ++prev);
+            }}
+          >
             +
           </div>
         </div>
-        <div className="opacity-50 leading-8">Còn 10 sản phẩm</div>
+        <div className="opacity-50 leading-8">Còn {selectedProduct.quantity} sản phẩm</div>
       </div>
       <div className="flex justify-between mt-4">
-        <button className="w-[48%] h-10 bg-slate-200 rounded leading-10 opacity-70 font-semibold">Thêm vào giỏ</button>
-        <button className="w-[48%] h-10 bg-red-500 rounded leading-10 text-white font-semibold">Mua ngay</button>
+        <button
+          className="w-[48%] h-10 bg-slate-200 rounded leading-10 opacity-70 font-semibold"
+          onClick={handleAddToBag}
+        >
+          Thêm vào giỏ
+        </button>
+        <button className="w-[48%] h-10 bg-red-500 rounded leading-10 text-white font-semibold" onClick={handleBuy}>
+          Mua ngay
+        </button>
       </div>
     </div>
   );

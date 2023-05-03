@@ -3,12 +3,19 @@ import { Filter } from "./Filter.navbar";
 import { Search } from "./Search.navbar";
 import { TopNav } from "./TopNav.navbar";
 import { SubNav } from "./subNav.navbar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SearchMobile } from "./SearchMobile.filter";
+import { toggleAuthenState } from "../../../redux/slice/user.slice";
 
 export const Navbar = () => {
   const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
   const { selectedProduct } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleClickBag = () => {
+    if (!user) dispatch(toggleAuthenState("login"));
+  };
 
   // scroll handler
   window.addEventListener("scroll", () => {
@@ -44,7 +51,7 @@ export const Navbar = () => {
         </a>
         <Filter></Filter>
         <Search></Search>
-        <a aria-label="tote bag" href="#" className="mt-3 mx-4 sm:mx-16">
+        <div aria-label="tote bag" className="mt-[14px] mx-4 sm:mx-16" onClick={handleClickBag}>
           <div className="hover:opacity-80">
             <svg
               className="h-7 w-7"
@@ -60,7 +67,7 @@ export const Navbar = () => {
               ></path>
             </svg>
           </div>
-        </a>
+        </div>
         <div className="sm:hidden mt-3 mr-4">
           <svg className="svg-icon w-7" viewBox="0 0 20 20">
             <path

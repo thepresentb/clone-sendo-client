@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { Login } from "../../Authen/Login";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, toggleAuthenState } from "../../../redux/slice/user.slice";
 
 export const TopNav = () => {
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   // hide qr menu
   const handleHoverQr = () => {
     document.getElementById("hide-qr").classList.toggle("hidden");
@@ -29,9 +35,36 @@ export const TopNav = () => {
           </div>
         </div>
         <div className="flex cursor-pointer">
-          <div className="pr-2 hover:opacity-80">Đăng kí</div>
+          <div
+            className={`pr-2 hover:opacity-80 `}
+            onClick={() => {
+              if (user) return;
+              dispatch(toggleAuthenState("register"));
+            }}
+          >
+            {user ? user.username : "Đăng kí"}
+          </div>
           <div className="w-[2px] bg-white h-[24px] relative top-[4px]"></div>
-          <div className="pl-2 hover:opacity-80">Đăng nhập</div>
+          {user ? (
+            <div
+              className="pl-2 hover:opacity-80 text-[13px]"
+              onClick={() => {
+                localStorage.removeItem("accessToken");
+                return dispatch(addUser(null));
+              }}
+            >
+              Đăng Xuất
+            </div>
+          ) : (
+            <div
+              className="pl-2 hover:opacity-80"
+              onClick={() => {
+                dispatch(toggleAuthenState("login"));
+              }}
+            >
+              Đăng nhập
+            </div>
+          )}
         </div>
       </div>
       <div className="flex cursor-pointer">

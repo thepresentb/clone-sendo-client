@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getProductInfo } from "../../redux/apiRequest/product.api";
+import { productApi } from "../../redux/apiRequest/product.api";
 import { setFilter } from "../../redux/slice/category.slice";
 import { Detail } from "./Detail";
 
@@ -22,7 +22,7 @@ export const Info = () => {
 
   useEffect(() => {
     if (productId) {
-      getProductInfo(dispatch, productId);
+      productApi.getProductInfo(dispatch, productId);
     } else {
       navigate("/");
     }
@@ -31,7 +31,7 @@ export const Info = () => {
   return (
     <div className="mt-[100px] bg-slate-100">
       <div className="xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
-        <div className="opacity-60 text-sm py-4">
+        <div className="opacity-80 text-sm py-4">
           <a href="/">sendo.vn</a>
           <span className="mx-2">/</span>
           <span

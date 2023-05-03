@@ -10,7 +10,7 @@ export const SlideHeader = () => {
   return (
     <div
       className={`flex flex-col sm:mt-[140px] mt-[180px] mb-8 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] sm:mx-auto ${
-        isCategoryPage || selectedCategoryId ? "hidden" : ""
+        isCategoryPage || selectedProduct ? "hidden" : null
       } `}
     >
       {list.map((item) => {
