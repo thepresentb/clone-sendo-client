@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Filter } from "./Filter.navbar";
 import { Search } from "./Search.navbar";
 import { TopNav } from "./TopNav.navbar";
@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { SearchMobile } from "./SearchMobile.filter";
 import { toggleAuthenState } from "../../../redux/slice/user.slice";
 import { useNavigate } from "react-router-dom";
+import { bagApi } from "../../../redux/apiRequest/bag.api";
 
 export const Navbar = () => {
   const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
-  const { isBagPage } = useSelector((state) => state.bag);
+  const { isBagPage, bag } = useSelector((state) => state.bag);
   const { selectedProduct } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ export const Navbar = () => {
     if (!user) dispatch(toggleAuthenState("login"));
     else navigate("/bag");
   };
+
+  useEffect(() => {
+    bagApi.getBag(dispatch, user?._id);
+  }, [user]);
 
   // scroll handler
   window.addEventListener("scroll", () => {
@@ -56,7 +61,7 @@ export const Navbar = () => {
         <Filter></Filter>
         <Search></Search>
         <div aria-label="tote bag" className="mt-[14px] mx-4 sm:mx-16" onClick={handleClickBag}>
-          <div className="hover:opacity-80">
+          <div className="relative hover:opacity-80">
             <svg
               className="h-7 w-7"
               viewBox="0 0 24 24"
@@ -70,6 +75,11 @@ export const Navbar = () => {
                 fillRule="nonzero"
               ></path>
             </svg>
+            {bag?.length !== 0 ? (
+              <div className="absolute rounded-full w-[19px] bg-white top-[-8px] left-[14px] pl-[6px] text-[11px]">
+                {bag?.length}
+              </div>
+            ) : null}
           </div>
         </div>
         <div className="sm:hidden mt-3 mr-4">
