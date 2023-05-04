@@ -7,11 +7,11 @@ export const Detail = () => {
   const { selectedProduct } = useSelector((state) => state.product);
 
   return (
-    <div className="flex rounded-lg bg-white">
-      <div className="p-6 w-4/12">
+    <div className="block sm:flex rounded-lg bg-white">
+      <div className="p-6 w-full sm:w-4/12">
         <img className="object-cover w-full rounded" src={selectedProduct.imgUrl} alt="" />
       </div>
-      <div className="py-6 px-2 w-7/12">
+      <div className="py-6 px-2 w-full sm:w-7/12">
         <TopInfo />
         <MiddleInfo />
         <BotInfo />
@@ -148,7 +148,7 @@ const BotInfo = () => {
           </div>
           <div className="flex flex-wrap">
             {selectedProduct.isInstallment ? (
-              <div className="w-6/12 my-2">
+              <div className="w-full sm:w-6/12 my-2">
                 <img
                   src="https://media3.scdn.vn/img4/2022/06_24/V5PHsdxRbMf35yH1KO0h.png"
                   alt="promotion-icon"
@@ -158,7 +158,7 @@ const BotInfo = () => {
               </div>
             ) : null}
             {selectedProduct.isInstallment ? (
-              <div className="w-6/12 my-2">
+              <div className="w-full sm:w-6/12 my-2">
                 <svg className="svg-icon w-6 inline opacity-50" viewBox="0 0 20 20">
                   <path
                     fill="fff"
@@ -168,7 +168,7 @@ const BotInfo = () => {
                 <span className="text-[14px] ml-2 opacity-50 leading-6">Ship hoả tốc</span>
               </div>
             ) : null}
-            <div className="w-6/12 my-2">
+            <div className="w-full sm:w-6/12 my-2">
               <svg className="svg-icon w-6 inline opacity-50" viewBox="0 0 20 20">
                 <path
                   fill="fff"
@@ -186,7 +186,7 @@ const BotInfo = () => {
             <span>Quyền lợi khách hàng & Bảo hành</span>
           </div>
           <div className="flex flex-wrap">
-            <div className="w-6/12 my-2">
+            <div className="w-full sm:w-6/12 my-2">
               <svg className="svg-icon w-6 inline opacity-50" viewBox="0 0 20 20">
                 <path
                   fill="fff"
@@ -195,7 +195,7 @@ const BotInfo = () => {
               </svg>
               <span className="text-[14px] ml-2 opacity-50 leading-6">7 ngày hoàn trả</span>
             </div>
-            <div className="w-6/12 my-2">
+            <div className="w-full sm:w-6/12 my-2">
               <div>
                 <svg className="svg-icon w-6 inline opacity-50" viewBox="0 0 20 20">
                   <path

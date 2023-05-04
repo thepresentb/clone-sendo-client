@@ -3,6 +3,7 @@ import "../../assets/css/slide.css";
 import { useDispatch, useSelector } from "react-redux";
 import { productApi } from "../../redux/apiRequest/product.api";
 import { StringHelper } from "../../utils/StringHelper";
+import { useNavigate } from "react-router-dom";
 
 export const FlashSale = () => {
   // countdown events
@@ -21,10 +22,12 @@ export const FlashSale = () => {
       seconds = 0;
     }
 
-    // document.querySelector(".countdown-d").innerHTML = days;
-    // document.querySelector(".countdown-h").innerHTML = hours;
-    // document.querySelector(".countdown-m").innerHTML = minutes;
-    // document.querySelector(".countdown-s").innerHTML = seconds;
+    if (document.querySelector(".countdown-d")) {
+      document.querySelector(".countdown-d").innerHTML = days;
+      document.querySelector(".countdown-h").innerHTML = hours;
+      document.querySelector(".countdown-m").innerHTML = minutes;
+      document.querySelector(".countdown-s").innerHTML = seconds;
+    }
   }, 1000);
 
   return (
@@ -78,6 +81,12 @@ const Silde = () => {
   const [leftInc, setLeftInc] = useState(0);
   const flashSaleList = useSelector((state) => state?.product?.flashSale);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClickProduct = (id) => {
+    localStorage.setItem("productId", id);
+    navigate("/product_info");
+  };
 
   useEffect(() => {
     productApi.getFlashSaleList(dispatch);
@@ -120,6 +129,7 @@ const Silde = () => {
               <div
                 className="slider-item cursor-pointer hover:scale-105 w-[106px] bg-white sm:w-[144px] h-[170px] sm:h-[206px] mx-[5px] my-4 shadow-center rounded"
                 key={item._id}
+                onClick={() => handleClickProduct(item._id)}
               >
                 <a>
                   <div>

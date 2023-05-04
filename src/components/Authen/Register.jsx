@@ -68,9 +68,9 @@ export const Register = () => {
         <div
           id="authentication-modal"
           aria-hidden="true"
-          className="flex m-auto overflow-x-hidden overflow-y-auto fixed h-modal md:h-fit w-fit top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center"
+          className="flex m-auto overflow-x-hidden overflow-y-auto fixed h-modal md:h-fit w-full sm:w-fit top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center"
         >
-          <div className="relative w-[500px] max-w-md px-4 h-full md:h-auto">
+          <div className="relative w-full sm:w-[500px] max-w-md px-4 h-full md:h-auto">
             <div className="bg-white rounded-lg shadow relative dark:bg-gray-700">
               <div className="flex justify-end p-2">
                 <button

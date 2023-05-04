@@ -6,15 +6,19 @@ import { SubNav } from "./subNav.navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchMobile } from "./SearchMobile.filter";
 import { toggleAuthenState } from "../../../redux/slice/user.slice";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
+  const { isBagPage } = useSelector((state) => state.bag);
   const { selectedProduct } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClickBag = () => {
     if (!user) dispatch(toggleAuthenState("login"));
+    else navigate("/bag");
   };
 
   // scroll handler
@@ -32,7 +36,7 @@ export const Navbar = () => {
   return (
     <div
       className={`navbar bg-red-600 fixed w-full z-20 top-0 left-0 ${
-        isCategoryPage || selectedProduct ? "sm:h-[100px] h-[70px]" : "sm:h-[138px] h-[160px]"
+        isCategoryPage || selectedProduct || isBagPage ? "sm:h-[100px] h-[70px]" : "sm:h-[138px] h-[160px]"
       }`}
     >
       <TopNav></TopNav>
@@ -92,7 +96,7 @@ export const Navbar = () => {
           </svg>
         </div>
       </div>
-      <SearchMobile></SearchMobile>
+      {isBagPage ? null : <SearchMobile />}
       <SubNav></SubNav>
     </div>
   );

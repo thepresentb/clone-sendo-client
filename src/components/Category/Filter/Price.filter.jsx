@@ -23,7 +23,6 @@ export const Price = () => {
   };
 
   const handleGetPrice = (rangePrice) => {
-    console.log(rangePrice);
     const minPrice = Number(document.getElementsByName("minPrice")[0].value);
     const maxPrice = Number(document.getElementsByName("maxPrice")[0].value);
     // kiem tra khoang gia khi click ap dung
@@ -39,7 +38,6 @@ export const Price = () => {
       $gte: rangePrice ? rangePrice[0] : minPrice,
       $lte: rangePrice ? rangePrice[1] : maxPrice,
     };
-    console.log("dispatching render");
     dispatch(setFilter(newFilter));
   };
 

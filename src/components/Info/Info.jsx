@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { productApi } from "../../redux/apiRequest/product.api";
 import { setFilter } from "../../redux/slice/category.slice";
 import { Detail } from "./Detail";
+import { toggleSelectedProduct } from "../../redux/slice/product.slice";
 
 export const Info = () => {
   const { selectedProduct } = useSelector((state) => state.product);
@@ -26,12 +27,15 @@ export const Info = () => {
     } else {
       navigate("/");
     }
+    return () => {
+      dispatch(toggleSelectedProduct(null));
+    };
   }, []);
 
   return (
-    <div className="mt-[100px] bg-slate-100">
+    <div className="mt-[70px] sm:mt-[100px] bg-slate-100">
       <div className="xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
-        <div className="opacity-80 text-sm py-4">
+        <div className="hidden sm:block opacity-80 text-sm py-4">
           <a href="/">sendo.vn</a>
           <span className="mx-2">/</span>
           <span

@@ -5,13 +5,14 @@ import { toggleSelectedCategoryId } from "../../../redux/slice/category.slice";
 export const SubNav = () => {
   const { list, selectedCategoryId, isCategoryPage } = useSelector((state) => state?.category);
   const { selectedProduct } = useSelector((state) => state.product);
+  const { isBagPage } = useSelector((state) => state.bag);
 
   const dispatch = useDispatch();
 
   return (
     <div
       className={`xl:max-w-[1100px] mt-[13px] sm:mt-0 lg:max-w-[900px] md:max-w-[750px] mx-auto ${
-        isCategoryPage || selectedProduct ? "hidden" : ""
+        isCategoryPage || selectedProduct || isBagPage ? "hidden" : ""
       } `}
     >
       <div className="w-full m-auto flex relative hideScroll">

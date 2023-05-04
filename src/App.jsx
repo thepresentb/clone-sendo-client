@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userApi } from "./redux/apiRequest/user.api";
 import { Login } from "./components/Authen/Login";
 import { Register } from "./components/Authen/Register";
+import { Bag } from "./components/Bag/Bag";
 
 function App() {
   const { authenState } = useSelector((state) => state.user);
@@ -26,8 +27,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Body />} />
-        <Route path="category" element={<Category />} />
+        <Route path="/category" element={<Category />} />
         <Route path="/product_info" element={<Info />} />
+        <Route path="/bag" element={<Bag />} />
       </Routes>
       {authenState === "login" ? <Login /> : null}
       {authenState === "register" ? <Register /> : null}

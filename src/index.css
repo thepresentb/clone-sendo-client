@@ -20,3 +20,11 @@
     background-image: linear-gradient(to right, rgb(238, 108, 14), rgb(255, 198, 0));
   }
 }
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
