@@ -15,16 +15,19 @@ export const Nav = () => {
   });
 
   return (
-    <div className="hidden sm:flex flex-col flex-start w-full items-start xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
+    <div
+      className="hidden
+     sm:flex flex-col flex-start w-full items-start xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto"
+    >
       <div className="text-sm text-blue-600">
         <a href="/">Sendo.vn</a>
         <span className="ml-2 text-gray-700">/ Kết quả tìm kiếm</span>
       </div>
-      <div className="">
+      <div className="flex">
         <span className="text-xl font-bold">
           {filter?.name ? filter.name : nameFilter ? nameFilter : "Tất cả sản phẩm"}
         </span>
-        <span className="ml-4 text-sm text-gray-800">tim thay {paginatedProducts?.total} san pham</span>
+        <span className="ml-2 text-sm text-gray-800 mt-1">Tìm thấy {paginatedProducts?.total} sản phẩm</span>
       </div>
     </div>
   );

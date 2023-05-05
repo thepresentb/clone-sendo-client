@@ -125,7 +125,7 @@ export const Product = () => {
         className={`${
           paginatedProducts?.paginatedProducts?.length === 0 ? "hidden" : "flex"
         }  col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-4 ${
-          !paginatedProducts.hasMore ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+          !paginatedProducts.hasMore ? "hidden" : "cursor-pointer"
         }`}
         onClick={handleLoadMore}
       >

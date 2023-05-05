@@ -19,7 +19,7 @@ export const TopNav = () => {
           <div className="absolute w-full h-2 top-[20px]"></div>
           <div
             id="hide-qr"
-            className="absolute z-30 w-[220px] bg-white flex items-center justify-center flex-col shadow-md pt-3 hidden"
+            className="absolute z-30 w-[220px] rounded bg-white flex items-center justify-center flex-col shadow-md pt-3 hidden"
           >
             <div className="">
               <img src="../../../src/assets/img/qr_code.png" alt="QR CODE" />

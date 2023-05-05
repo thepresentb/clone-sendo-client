@@ -122,10 +122,7 @@ export const Products = () => {
           );
         })}
       </div>
-      <div
-        className={`flex cursor-pointer ${!paginatedProducts.hasMore ? "cursor-not-allowed" : ""}`}
-        onClick={handleLoadMore}
-      >
+      <div className={`flex ${!paginatedProducts.hasMore ? "hidden" : "cursor-pointer"}`} onClick={handleLoadMore}>
         <div className="mx-auto bg-white py-3 px-20 sm:px-40 sm:mt-12 sm:mb-20 my-10 rounded-md font-semibold">
           Xem thêm
         </div>

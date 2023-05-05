@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toggleAuthenState } from "../../../redux/slice/user.slice";
+import { bagApi } from "../../../redux/apiRequest/bag.api";
 
 export const SearchMobile = () => {
   const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
+  const { bag } = useSelector((state) => state.bag);
   const { selectedProduct } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -12,7 +14,12 @@ export const SearchMobile = () => {
 
   const handleClickBag = () => {
     if (!user) dispatch(toggleAuthenState("login"));
+    else navigate("/bag");
   };
+
+  useEffect(() => {
+    bagApi.getBag(dispatch, user?._id);
+  }, [user]);
 
   if (selectedProduct) return <></>;
 
@@ -44,7 +51,7 @@ export const SearchMobile = () => {
         className={`mt-[21px] mr-[14px] sm:mx-16 ${isCategoryPage ? "" : "hidden"}`}
         onClick={handleClickBag}
       >
-        <div className="hover:opacity-80">
+        <div className="relative hover:opacity-80">
           <svg
             className="h-7 w-7"
             viewBox="0 0 24 24"
@@ -58,6 +65,11 @@ export const SearchMobile = () => {
               fillRule="nonzero"
             ></path>
           </svg>
+          {bag?.length !== 0 ? (
+            <div className="absolute rounded-full w-[19px] bg-white top-[-8px] left-[14px] pl-[6px] text-[11px]">
+              {bag?.length}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

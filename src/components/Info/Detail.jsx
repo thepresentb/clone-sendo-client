@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StringHelper } from "../../utils/StringHelper";
 import { toggleAuthenState } from "../../redux/slice/user.slice";
+import { bagApi } from "../../redux/apiRequest/bag.api";
+import { useNavigate } from "react-router-dom";
 
 export const Detail = () => {
   const { selectedProduct } = useSelector((state) => state.product);
@@ -59,9 +61,16 @@ const MiddleInfo = () => {
   const { selectedProduct } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToBag = () => {
-    if (!user) dispatch(toggleAuthenState("login"));
+    if (!user) return dispatch(toggleAuthenState("login"));
+    bagApi.createBag(dispatch, {
+      accountId: user._id,
+      productId: selectedProduct._id,
+      quantity,
+    });
+    navigate("/bag");
   };
 
   const handleBuy = () => {

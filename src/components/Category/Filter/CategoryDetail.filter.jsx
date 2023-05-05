@@ -32,7 +32,7 @@ export const CategoryDetail = () => {
                 className="flex hover:text-red-400 hover:translate-x-0.5"
                 onClick={() => setShowDetailId(item.category._id === showDetailId ? null : item.category._id)}
               >
-                <span className="overflow-x-auto whitespace-nowrap grow text-sm font-semibold truncate">
+                <span className="overflow-x-auto whitespace-nowrap grow text-sm font-medium truncate">
                   {item.category.name}
                 </span>
                 <HideIcon iconWidth={"sm"} isShow={item.category._id === showDetailId} />

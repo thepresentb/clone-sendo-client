@@ -14,6 +14,9 @@ export const Category = () => {
 
   useEffect(() => {
     dispatch(setIsCategoryPage(true));
+    return () => {
+      dispatch(setIsCategoryPage(false));
+    };
   }, [paginatedProducts]);
 
   return (
