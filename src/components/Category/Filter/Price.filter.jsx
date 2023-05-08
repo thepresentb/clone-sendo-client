@@ -3,48 +3,57 @@ import { HideIcon } from "./HideIcon.filter";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../../redux/slice/category.slice";
 
+const RANGE = {
+  1: [0, 50000],
+  2: [50000, 150000],
+  3: [150000, 300000],
+  4: [300000, 10000000000],
+};
+
 export const Price = () => {
   const [isShow, setIsShow] = useState(true);
+  const [range, setRange] = useState(null);
+  const [isDisable, setIsDisable] = useState(false);
   const { filter } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
   const handleSetPrice = () => {
     const minElement = document.getElementsByName("minPrice")[0];
     const maxElement = document.getElementsByName("maxPrice")[0];
-    const submitElement = document.getElementById("submit-priceFilter");
 
     if (Number(minElement.value) > Number(maxElement.value)) {
-      submitElement.style.cursor = "not-allowed";
-      submitElement.style.opacity = "0.5";
+      setIsDisable(false);
     } else {
-      submitElement.style.cursor = "pointer";
-      submitElement.style.opacity = "1";
+      setIsDisable(true);
     }
   };
 
-  const handleGetPrice = (rangePrice) => {
+  const handleGetPrice = (option) => {
     const minPrice = Number(document.getElementsByName("minPrice")[0].value);
     const maxPrice = Number(document.getElementsByName("maxPrice")[0].value);
     // kiem tra khoang gia khi click ap dung
-    if (!rangePrice && minPrice >= maxPrice) return;
-    // xoa cac select khi click ap dung
-    if (!rangePrice) {
-      document.getElementsByName("priceFilter").forEach((item) => {
-        item.checked = false;
-      });
-    }
+    if (!option && minPrice >= maxPrice) return;
+
     let newFilter = JSON.parse(JSON.stringify(filter));
-    newFilter.price = {
-      $gte: rangePrice ? rangePrice[0] : minPrice,
-      $lte: rangePrice ? rangePrice[1] : maxPrice,
-    };
+    const isSP = option !== null;
+    if (isSP && option === range) {
+      setRange(null);
+      delete newFilter?.price;
+    } else {
+      setRange(option);
+      newFilter.price = {
+        $gte: option ? RANGE[option][0] : minPrice,
+        $lte: option ? RANGE[option][1] : maxPrice,
+      };
+    }
+
     dispatch(setFilter(newFilter));
   };
 
   return (
     <div className=" border-b-[1px] border-gray-200">
       <div className="flex my-3 mx-2 p-1 cursor-pointer rounded hover:bg-slate-200" onClick={() => setIsShow(!isShow)}>
-        <div className="font-bold grow">Khoảng giá</div>
+        <div className="font-semibold grow text-sm ml-1">Khoảng giá</div>
         <HideIcon isShow={isShow} />
       </div>
       <div className={`mx-4 ${isShow ? "" : "hidden"} text-sm`}>
@@ -58,7 +67,6 @@ export const Price = () => {
                   type="number"
                   onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
                   name="minPrice"
-                  style={style}
                   onChange={handleSetPrice}
                 />
               </div>
@@ -80,44 +88,52 @@ export const Price = () => {
             </div>
           </div>
           <div
-            className="w-full rounded bg-red-500 text-white my-2 py-1 text-center text-sm font-semibold cursor-not-allowed opacity-50"
+            className={`w-full rounded  my-2 py-1 text-center text-xs ${
+              !isDisable ? "bg-slate-200 text-slate-400" : "bg-red-500 text-white font-semibold"
+            } `}
             id="submit-priceFilter"
             onClick={() => handleGetPrice()}
           >
             Áp dụng
           </div>
         </div>
-        <div className="mb-2 cursor-pointer" onClick={() => handleGetPrice([0, 50000])}>
-          <input className="mb-1" type="radio" id="5" name="priceFilter" value="5" />
-          <label className="ml-2 cursor-pointer" htmlFor="5">
+        <div className="mb-2 cursor-pointer" onClick={() => handleGetPrice(1)}>
+          <div
+            className={`rounded bg-slate-200 py-[6px] px-2 ${
+              range === 1 ? "border-[1px] border-red-600 font-semibold" : null
+            } `}
+          >
             Dưới 50k
-          </label>
+          </div>
         </div>
-        <div className="mb-2 cursor-pointer" onClick={() => handleGetPrice([50000, 150000])}>
-          <input className="mb-1" type="radio" id="4" name="priceFilter" value="4" />
-          <label className="ml-2 cursor-pointer" htmlFor="4">
+        <div className="mb-2 cursor-pointer" onClick={() => handleGetPrice(2)}>
+          <div
+            className={`rounded bg-slate-200 py-[6px] px-2 ${
+              range === 2 ? "border-[1px] border-red-600 font-semibold" : null
+            } `}
+          >
             50K - 150K
-          </label>
+          </div>
         </div>
-        <div className="mb-2 cursor-pointer" onClick={() => handleGetPrice([150000, 300000])}>
-          <input className="mb-1" type="radio" id="3" name="priceFilter" value="3" />
-          <label className="ml-2 cursor-pointer" htmlFor="3">
+        <div className="mb-2 cursor-pointer" onClick={() => handleGetPrice(3)}>
+          <div
+            className={`rounded bg-slate-200 py-[6px] px-2 ${
+              range === 3 ? "border-[1px] border-red-600 font-semibold" : null
+            } `}
+          >
             150K - 300K
-          </label>
+          </div>
         </div>
-        <div className="mb-4" onClick={() => handleGetPrice([300000, 1000000000])}>
-          <input className="mb-1" type="radio" id="2" name="priceFilter" value="2" />
-          <label className="ml-2 cursor-pointer" htmlFor="2">
+        <div className="mb-4" onClick={() => handleGetPrice(4)}>
+          <div
+            className={`rounded bg-slate-200 py-[6px] px-2 ${
+              range === 4 ? "border-[1px] border-red-600 font-semibold" : null
+            } `}
+          >
             Trên 300K
-          </label>
+          </div>
         </div>
       </div>
     </div>
   );
-};
-
-let style = {
-  "::WebkitInnerSpinButton": {
-    "-webkit-appearance": "none",
-  },
 };

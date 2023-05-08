@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setFilter } from "../../../redux/slice/category.slice";
+import { setFilter, toggleSelectedCategoryId } from "../../../redux/slice/category.slice";
 
 export const Filter = () => {
   const [categoryDetail, setCategoryDetail] = useState([]);
@@ -19,8 +19,8 @@ export const Filter = () => {
   };
 
   // hide filter children
-  const handleHoverFilterChildren = (list) => {
-    setCategoryDetail(list);
+  const handleHoverFilterChildren = (item) => {
+    setCategoryDetail(item);
     document.getElementById("hide-filter-children").classList.remove("hidden");
   };
   return (
@@ -47,7 +47,7 @@ export const Filter = () => {
               <div
                 className="p-2 whitespace-nowrap flex hover:bg-red-100 hover:translate-x-1 rounded cursor-pointer"
                 key={item.category._id}
-                onMouseEnter={() => handleHoverFilterChildren(item.detail)}
+                onMouseEnter={() => handleHoverFilterChildren(item)}
               >
                 <p className="grow text-sm font-semibold">{item.category.name}</p>
                 <div className="ml-6">
@@ -75,26 +75,28 @@ export const Filter = () => {
 };
 
 const FilterItem = ({ categoryDetail }) => {
+  const { list } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
-  const setFilterStore = (id) => {
+  const setFilterStore = (detailId, categoryId) => {
+    dispatch(toggleSelectedCategoryId(categoryId));
     dispatch(
       setFilter({
-        categoryDetailId: id,
+        categoryDetailId: detailId,
       })
     );
   };
 
   return (
     <div className="p-3 ml-2">
-      {categoryDetail?.length > 0 &&
-        categoryDetail.map((item) => {
+      {categoryDetail.detail?.length > 0 &&
+        categoryDetail.detail?.map((item) => {
           return (
             <Link
               to="/category"
               className="p-2 whitespace-nowrap flex hover:bg-gray-100 rounded cursor-pointer"
               key={item._id}
-              onClick={() => setFilterStore(item._id)}
+              onClick={() => setFilterStore(item._id, categoryDetail.category._id)}
             >
               <p className="grow text-sm cursor-pointer">{item.name}</p>
             </Link>

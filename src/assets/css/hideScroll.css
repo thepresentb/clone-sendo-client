@@ -1,5 +1,5 @@
 .hideScroll {
-  overflow-x: scroll;
+  overflow: scroll;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
 }

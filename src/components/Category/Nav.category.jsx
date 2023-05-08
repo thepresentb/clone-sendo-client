@@ -21,7 +21,7 @@ export const Nav = () => {
     >
       <div className="text-sm text-blue-600">
         <a href="/">Sendo.vn</a>
-        <span className="ml-2 text-gray-700">/ Kết quả tìm kiếm</span>
+        <span className="ml-1 text-gray-700">/ Kết quả tìm kiếm</span>
       </div>
       <div className="flex">
         <span className="text-xl font-bold">

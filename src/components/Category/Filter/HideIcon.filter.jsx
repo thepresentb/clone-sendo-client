@@ -4,7 +4,7 @@ export const HideIcon = ({ iconWidth, isShow, bgColor, isDown }) => {
       <div className={`m-auto ${isShow ? "" : "hidden"} ${isDown ? "hidden" : ""}`}>
         <svg
           className={`svg-icon ${bgColor ? bgColor : "bg-white"} ${
-            iconWidth === "sm" ? "w-[22px] p-1" : "w-6 p-1"
+            iconWidth === "sm" ? "w-5 p-1" : "w-6 p-1"
           } cursor-pointer rounded`}
           viewBox="0 0 20 20"
         >
@@ -17,7 +17,7 @@ export const HideIcon = ({ iconWidth, isShow, bgColor, isDown }) => {
       <div className={`m-auto ${isShow ? "hidden" : ""} ${isDown ? "hidden" : ""}`}>
         <svg
           className={`svg-icon ${bgColor ? bgColor : "bg-white"} ${
-            iconWidth === "sm" ? "w-[22px] p-1" : "w-6 p-1"
+            iconWidth === "sm" ? "w-5 p-1" : "w-6 p-1"
           } cursor-pointer rounded`}
           viewBox="0 0 20 20"
         >
