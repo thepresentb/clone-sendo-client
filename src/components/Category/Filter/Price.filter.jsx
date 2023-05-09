@@ -53,7 +53,7 @@ export const Price = () => {
   return (
     <div className=" border-b-[1px] border-gray-200">
       <div className="flex my-3 mx-2 p-1 cursor-pointer rounded hover:bg-slate-200" onClick={() => setIsShow(!isShow)}>
-        <div className="font-semibold grow text-sm ml-1">Khoảng giá</div>
+        <div className="font-semibold grow text-sm ml-1 leading-6">Khoảng giá</div>
         <HideIcon isShow={isShow} />
       </div>
       <div className={`mx-4 ${isShow ? "" : "hidden"} text-sm`}>
@@ -124,7 +124,7 @@ export const Price = () => {
             150K - 300K
           </div>
         </div>
-        <div className="mb-4" onClick={() => handleGetPrice(4)}>
+        <div className="mb-4 cursor-pointer" onClick={() => handleGetPrice(4)}>
           <div
             className={`rounded bg-slate-200 py-[6px] px-2 ${
               range === 4 ? "border-[1px] border-red-600 font-semibold" : null

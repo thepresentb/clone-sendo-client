@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { productApi } from "../../redux/apiRequest/product.api";
 import { setFilter } from "../../redux/slice/category.slice";
-import { Detail } from "./Detail";
 import { toggleSelectedProduct } from "../../redux/slice/product.slice";
+import { Detail } from "./Detail.info";
 
 export const Info = () => {
   const { selectedProduct } = useSelector((state) => state.product);

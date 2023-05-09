@@ -81,8 +81,8 @@ export const Bag = () => {
                 {/* <p className="text-sm text-gray-700">including VAT</p> */}
               </div>
             </div>
-            <button className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
-              Check out
+            <button className="mt-6 w-full rounded-md bg-red-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+              Mua ngay
             </button>
           </div>
         </div>

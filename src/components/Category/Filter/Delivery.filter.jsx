@@ -30,7 +30,7 @@ export const Delivery = () => {
   return (
     <div className=" border-b-[1px] border-gray-200">
       <div className="flex my-3 mx-2 p-1 cursor-pointer rounded hover:bg-slate-200" onClick={() => setIsShow(!isShow)}>
-        <div className="font-semibold grow text-sm ml-1">Phương thức vận chuyển</div>
+        <div className="font-semibold grow text-sm ml-1 leading-6">Phương thức vận chuyển</div>
         <HideIcon isShow={isShow} />
       </div>
       <div className={`mx-4 ${isShow ? "" : "hidden"} text-sm`}>

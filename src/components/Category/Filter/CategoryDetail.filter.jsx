@@ -27,17 +27,20 @@ export const CategoryDetail = () => {
   };
 
   useEffect(() => {
+    // thay doi filter
     setShowDetailId(selectedCategoryId);
+    // reset lai filter khong vo giao dien
+    setListId(null);
   }, [selectedCategoryId]);
 
   return (
     <div className=" pb-2 border-b-[1px] border-gray-200 ">
       <div className="flex mt-3 mx-2 p-1 cursor-pointer rounded hover:bg-slate-200" onClick={() => setIsShow(!isShow)}>
-        <div className="font-semibold grow text-sm ml-1">Danh mục</div>
+        <div className="font-semibold grow text-sm ml-1 leading-6">Danh mục</div>
         <HideIcon isShow={isShow} />
       </div>
-      <div className={`mx-4 pb-2 ${isShow ? "" : "hidden"}`}>
-        <div className="text-blue-700 text-sm my-2 cursor-pointer">Về trang tất cả danh mục</div>
+      <div className={`mx-2 pb-2 ${isShow ? "" : "hidden"}`}>
+        <div className="text-blue-700 ml-2 text-sm my-2 cursor-pointer">Về trang tất cả danh mục</div>
         {categoryList?.map((item) => {
           if (item.category._id !== selectedCategoryId) return null;
           return (
@@ -63,12 +66,12 @@ export const CategoryDetail = () => {
               </div>
               <div
                 className={`text-sm mb-2 ${
-                  isFull ? (listId ? "h-[520px]" : "h-[380px]") : listId ? "h-[370px]" : "h-[230px]"
+                  isFull ? (listId ? "h-[440px]" : "h-[300px]") : listId ? "h-[350px]" : "h-[210px]"
                 } overflow-hidden ${item.category._id === showDetailId ? "" : "hidden"}`}
               >
                 {item?.detail.map((itemDetail) => {
                   return (
-                    <div className={` p-1 ml-2  truncate rounded `} key={itemDetail._id}>
+                    <div className={` pl-1 ml-1  truncate rounded `} key={itemDetail._id}>
                       <div
                         className="flex hover:bg-slate-100 px-1 py-[2px] rounded "
                         onClick={() => setListId(itemDetail._id === listId ? null : itemDetail._id)}
@@ -95,31 +98,31 @@ export const CategoryDetail = () => {
                           className="py-[4px] pl-10 px-1 rounded hover:font-semibold hover:bg-slate-100"
                           onClick={() => setFilterStore(itemDetail._id)}
                         >
-                          {itemDetail.name + " detail"}
+                          {"Detail " + itemDetail.name}
                         </div>
                         <div
                           className="py-[4px] pl-10 px-1 rounded hover:font-semibold hover:bg-slate-100"
                           onClick={() => setFilterStore(itemDetail._id)}
                         >
-                          {itemDetail.name + " detail"}
+                          {"Detail " + itemDetail.name}
                         </div>
                         <div
                           className="py-[4px] pl-10 px-1 rounded hover:font-semibold hover:bg-slate-100"
                           onClick={() => setFilterStore(itemDetail._id)}
                         >
-                          {itemDetail.name + " detail"}
+                          {"Detail " + itemDetail.name}
                         </div>
                         <div
                           className="py-[4px] pl-10 px-1 rounded hover:font-semibold hover:bg-slate-100"
                           onClick={() => setFilterStore(itemDetail._id)}
                         >
-                          {itemDetail.name + " detail"}
+                          {"Detail " + itemDetail.name}
                         </div>
                         <div
                           className="py-[4px] pl-10 px-1 rounded hover:font-semibold hover:bg-slate-100"
                           onClick={() => setFilterStore(itemDetail._id)}
                         >
-                          {itemDetail.name + " detail"}
+                          {"Detail " + itemDetail.name}
                         </div>
                       </div>
                     </div>
@@ -128,14 +131,14 @@ export const CategoryDetail = () => {
               </div>
               <div className={`${item.category._id === showDetailId ? "" : "hidden"}`}>
                 <div
-                  className={`flex ml-6 my-2 py-2 px-4 hover:bg-slate-100 rounded w-fit ${isFull ? "hidden" : null} `}
+                  className={`flex ml-10 my-2 py-2 px-4 hover:bg-slate-100 rounded w-fit ${isFull ? "hidden" : null} `}
                   onClick={() => setIsFull(true)}
                 >
                   <Plus />
                   <div className="ml-2 text-sm font-semibold">Xem thêm</div>
                 </div>
                 <div
-                  className={`flex ml-6 my-2 py-2 px-4 hover:bg-slate-100 rounded w-fit ${isFull ? null : "hidden"}`}
+                  className={`flex ml-10 my-2 py-2 px-4 hover:bg-slate-100 rounded w-fit ${isFull ? null : "hidden"}`}
                   onClick={() => setIsFull(false)}
                 >
                   <div className="mt-[2px]">

@@ -38,7 +38,7 @@ export const Login = () => {
   };
 
   return (
-    <>
+    <div style={{ animation: `fadeIn 0.2s` }}>
       <div className="flex">
         <ToastContainer />
         <div
@@ -140,6 +140,6 @@ export const Login = () => {
         </div>
       </div>
       <div className={`opacity-90 fixed inset-0 z-40 bg-black `} onClick={() => dispatch(toggleAuthenState(""))}></div>
-    </>
+    </div>
   );
 };
