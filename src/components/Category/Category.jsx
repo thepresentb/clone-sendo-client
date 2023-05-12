@@ -27,7 +27,7 @@ export const Category = () => {
           <div className="hidden  relative mt-4 lg:col-span-1 xl:col-span-1 lg:flex xl:flex">
             <Filter />
           </div>
-          <div className={`col-span-full lg:col-span-3 xl:col-span-4`}>
+          <div className={`col-span-full lg:col-span-3 xl:col-span-4 mb-10`}>
             <Sort />
             <FilterMobile />
             <Product />

@@ -14,7 +14,7 @@ export const Filter = () => {
     const filterCateElementStyle = document.querySelector(".filter-cate")?.style;
     let scroll = Math.max(80, 185 - window.scrollY);
     if (bodyHeight - window.innerHeight - window.scrollY <= footerHeight) {
-      scroll += bodyHeight - window.innerHeight - window.scrollY - footerHeight;
+      scroll += bodyHeight - window.innerHeight - window.scrollY - footerHeight - 40;
     }
     if (!filterCateElementStyle) return;
     if (window.scrollY === 0) {
@@ -27,7 +27,9 @@ export const Filter = () => {
   });
 
   return (
-    <div className={`filter-cate shadow-center fixed h-[90vh] hideScroll  top-[185px]  w-[210px] bg-white rounded-md `}>
+    <div
+      className={`filter-cate shadow-center fixed h-[90vh] overflow-y-auto  top-[185px]  w-[210px] bg-white rounded-md `}
+    >
       <CategoryDetail />
       <Price />
       <Installment />

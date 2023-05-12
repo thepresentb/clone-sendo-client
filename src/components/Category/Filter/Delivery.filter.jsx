@@ -36,7 +36,7 @@ export const Delivery = () => {
       <div className={`mx-4 ${isShow ? "" : "hidden"} text-sm`}>
         <div className="mb-2 cursor-pointer" onClick={() => setFilterStore("sp")}>
           <input
-            className="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded-sm focus:outline-none focus:ring-0 "
+            className="w-4 h-4 text-red-600 bg-gray-100 border-2 border-gray-500 rounded-sm focus:outline-none focus:ring-0 "
             type="checkbox"
             name="delivery"
             checked={isState === "sp"}
@@ -48,7 +48,7 @@ export const Delivery = () => {
         </div>
         <div className="mb-4" onClick={() => setFilterStore("notsp")}>
           <input
-            className="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded-sm focus:outline-none focus:ring-0 "
+            className="w-4 h-4 text-red-600 bg-gray-100 border-2 border-gray-500 rounded-sm focus:outline-none focus:ring-0 "
             type="checkbox"
             name="delivery"
             value="notsp"

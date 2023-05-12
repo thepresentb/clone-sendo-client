@@ -19,9 +19,19 @@ export const Bag = () => {
     let saleNew = 0;
     for (let i = 0; i < bag.length; i++) {
       if (bag[i].isChose === true) {
+        let saleStatus = false;
+        if (
+          bag[i].productId.saleId !== null &&
+          bag[i].productId.saleId.saleStatus &&
+          new Date().toISOString() > bag[i].productId.saleId.startAt &&
+          new Date().toISOString() < bag[i].productId.saleId.endAt
+        ) {
+          saleStatus = true;
+        }
+
         totalNew += bag[i].quantity * bag[i].productId.price;
         // soluong * gia san pham * sale /100
-        saleNew += bag[i].productId.saleId
+        saleNew += saleStatus
           ? (bag[i].quantity * bag[i].productId.price * bag[i].productId.saleId?.salePercent) / 100
           : 0;
       }
@@ -57,7 +67,9 @@ export const Bag = () => {
   return (
     <div className="mt-[70px] sm:mt-[100px] mb-10">
       <div className="h-fit bg-gray-100 py-10">
-        <h1 className="mb-10 text-center text-2xl font-bold">Giỏ hàng của bạn ({bag.length})</h1>
+        <div className="mx-auto max-w-5xl px-6 md:flex md:space-x-6 xl:px-0">
+          <h1 className="mb-10 text-start text-xl font-bold">Giỏ hàng của bạn ({bag.length})</h1>
+        </div>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
             {bag?.map((item) => {
@@ -81,7 +93,7 @@ export const Bag = () => {
                 {/* <p className="text-sm text-gray-700">including VAT</p> */}
               </div>
             </div>
-            <button className="mt-6 w-full rounded-md bg-red-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+            <button className="mt-6 w-full rounded-md bg-red-500 py-1.5 font-medium text-blue-50 hover:bg-red-600">
               Mua ngay
             </button>
           </div>

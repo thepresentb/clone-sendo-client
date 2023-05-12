@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOrderBy } from "../../redux/slice/category.slice";
 import { HideIcon } from "./Filter/HideIcon.filter";
+import Check from "../../assets/svg/Check";
 
 export const Sort = () => {
   const [isShow, setIsShow] = useState(false);
@@ -17,15 +18,15 @@ export const Sort = () => {
   };
 
   return (
-    <div className="hidden relative sm:flex items-center text-center text-[14px] h-14 my-2 ">
-      <p className="mx-4  text-[13px]">Sắp xếp theo :</p>
+    <div className="hidden relative sm:flex items-center text-center h-14 my-2 ">
+      <p className="mx-4  text-[14px] ">Sắp xếp theo :</p>
       <button
         id="dropdownDelayButton"
         className="flex text-slate-500 w-[150px] rounded border-[1px] border-slate-300 bg-white text-xs p-1 pl-3 items-center "
         type="button"
         onClick={() => setIsShow(!isShow)}
       >
-        <span className="text-start grow">{sort}</span>
+        <span className="text-start grow text-[14px]">{sort}</span>
         <div className="opacity-40">
           <HideIcon isShow={isShow} />
         </div>
@@ -38,19 +39,21 @@ export const Sort = () => {
       >
         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
           <li
+            className={`flex ${sort === "Mới nhất" ? "font-semibold" : null} hover:bg-gray-100`}
             onClick={() => {
               setSort("Mới nhất");
               handleSetOrderBy("createdAt");
             }}
           >
-            <a
-              href="#"
-              className="block px-4 py-2 text-start hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
+            <a href="#" className="grow block px-4 py-2 text-start  dark:hover:bg-gray-600 dark:hover:text-white">
               Mới nhất
             </a>
+            <div className={`mt-1 mr-2 flex ${sort === "Mới nhất" ? "font-semibold" : "hidden"}`}>
+              <Check />
+            </div>
           </li>
           <li
+            className={`flex ${sort === "Đánh giá sao" ? "font-semibold" : null} hover:bg-gray-100`}
             onClick={() => {
               setSort("Đánh giá sao");
               handleSetOrderBy("rate");
@@ -58,12 +61,16 @@ export const Sort = () => {
           >
             <a
               href="#"
-              className="block px-4 py-2 text-start hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="grow block px-4 py-2 text-start hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Đánh giá sao
             </a>
+            <div className={`mt-1 mr-2 flex ${sort === "Đánh giá sao" ? "font-semibold" : "hidden"}`}>
+              <Check />
+            </div>
           </li>
           <li
+            className={`flex ${sort === "Giá cả" ? "font-semibold" : null} hover:bg-gray-100`}
             onClick={() => {
               setSort("Giá cả");
               handleSetOrderBy("price");
@@ -71,10 +78,13 @@ export const Sort = () => {
           >
             <a
               href="#"
-              className="block px-4 py-2 text-start hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="grow block px-4 py-2 text-start hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Giá cả
             </a>
+            <div className={`mt-1 mr-2 flex ${sort === "Giá cả" ? "font-semibold" : "hidden"}`}>
+              <Check />
+            </div>
           </li>
         </ul>
       </div>
