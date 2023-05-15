@@ -3,6 +3,7 @@ import categoryReducer from "./slice/category.slice";
 import productReducer from "./slice/product.slice";
 import userReducer from "./slice/user.slice";
 import bagReducer from "./slice/bag.slice";
+import checkOutReducer from "./slice/checkOut.slice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     product: productReducer,
     user: userReducer,
     bag: bagReducer,
+    checkOut: checkOutReducer,
   },
 });

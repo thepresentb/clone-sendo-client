@@ -10,6 +10,7 @@ import { userApi } from "./redux/apiRequest/user.api";
 import { Login } from "./components/Authen/Login";
 import { Register } from "./components/Authen/Register";
 import { Bag } from "./components/Bag/Bag";
+import { CheckOut } from "./components/CheckOut/CheckOut";
 
 function App() {
   const { authenState } = useSelector((state) => state.user);
@@ -21,16 +22,17 @@ function App() {
     if (accessToken) {
       userApi.refresh(dispatch, accessToken);
     }
-    setTimeout(() => {
-      setShowPopUp(true);
-    }, 1500);
+    // setTimeout(() => {
+    //   setShowPopUp(true);
+    // }, 1500);
   }, []);
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Body />} />
+        <Route path="/" element={<CheckOut />} />
+        {/* <Route path="/" element={<Body />} /> */}
         <Route path="/category" element={<Category />} />
         <Route path="/product_info" element={<Info />} />
         <Route path="/bag" element={<Bag />} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsBagPage } from "../../redux/slice/bag.slice";
 import { bagApi } from "../../redux/apiRequest/bag.api";
-import { redirect, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { Item } from "./Item.bag";
 import { StringHelper } from "../../utils/StringHelper";
 
@@ -49,7 +49,7 @@ export const Bag = () => {
     return () => {
       dispatch(setIsBagPage(false));
     };
-  }, []);
+  }, [user]);
 
   if (bag.length === 0) {
     return (
@@ -93,9 +93,12 @@ export const Bag = () => {
                 {/* <p className="text-sm text-gray-700">including VAT</p> */}
               </div>
             </div>
-            <button className="mt-6 w-full rounded-md bg-red-500 py-1.5 font-medium text-blue-50 hover:bg-red-600">
+            <Link
+              to="/check_out"
+              className="mt-6 w-full block text-center rounded-md bg-red-500 py-1.5 font-medium text-blue-50 hover:bg-red-600"
+            >
               Mua ngay
-            </button>
+            </Link>
           </div>
         </div>
       </div>

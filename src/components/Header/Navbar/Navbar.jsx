@@ -10,7 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { bagApi } from "../../../redux/apiRequest/bag.api";
 
 export const Navbar = () => {
-  const isCategoryPage = useSelector((state) => state.category?.isCategoryPage);
+  const { isCategoryPage } = useSelector((state) => state.category);
+  const { isCheckOutPage } = useSelector((state) => state.checkOut);
   const { isBagPage, bag } = useSelector((state) => state.bag);
   const { selectedProduct } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.user);
@@ -41,7 +42,9 @@ export const Navbar = () => {
   return (
     <div
       className={`navbar bg-red-600 fixed w-full z-20 top-0 left-0 ${
-        isCategoryPage || selectedProduct || isBagPage ? "sm:h-[100px] h-[70px]" : "sm:h-[138px] h-[160px]"
+        isCategoryPage || selectedProduct || isBagPage || isCheckOutPage
+          ? "sm:h-[100px] h-[70px]"
+          : "sm:h-[138px] h-[160px]"
       }`}
     >
       <TopNav></TopNav>

@@ -7,11 +7,12 @@ export const SlideHeader = () => {
   const { list, selectedCategoryId, isCategoryPage } = useSelector((state) => state.category);
   const { isBagPage } = useSelector((state) => state.bag);
   const { selectedProduct } = useSelector((state) => state.product);
+  const { isCheckOutPage } = useSelector((state) => state.checkOut);
 
   return (
     <div
       className={`flex flex-col sm:mt-[140px] mt-[180px] mb-8 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] sm:mx-auto ${
-        isCategoryPage || selectedProduct || isBagPage ? "hidden" : null
+        isCategoryPage || selectedProduct || isBagPage || isCheckOutPage ? "hidden" : null
       } `}
     >
       {list.map((item) => {
