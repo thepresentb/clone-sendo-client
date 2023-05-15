@@ -5,22 +5,12 @@ import { checkOutApi } from "../../redux/apiRequest/checkOut.api";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Address = ({ setChangeAddress }) => {
-  const { user } = useSelector((state) => state.user);
-  const { addressList } = useSelector((state) => state.checkOut);
-  const dispatch = useDispatch();
-
-  const defaultAddress = addressList?.filter((item) => item.isDefault === true)[0];
-
-  useEffect(() => {
-    if (user) {
-      checkOutApi.getAddress(dispatch, user._id);
-    }
-  }, [user]);
+  const { selectedAddress } = useSelector((state) => state.checkOut);
 
   return (
     <div className="py-4 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center">
       <div className="flex">
-        <div className="ml-4 mr-2 mt-[2px]">
+        <div className="ml-4 mr-2 mt-[1px]">
           <MapMarker1 size={20} color={"red"}></MapMarker1>
         </div>
         <p className="font-semibold text-base grow">Địa chỉ nhận hàng</p>
@@ -34,14 +24,14 @@ export const Address = ({ setChangeAddress }) => {
       </div>
       <div className="text-[15px] opacity-60 mx-8 mt-4">
         <div>
-          <span className="font-semibold">{defaultAddress?.receiver}</span>
-          <span className=""> / {defaultAddress?.phoneNumber}</span>
+          <span className="font-semibold">{selectedAddress?.receiver}</span>
+          <span className=""> / {selectedAddress?.phoneNumber}</span>
         </div>
         <div className="">
-          <span>{defaultAddress?.homeAddress}, </span>
-          <span>{defaultAddress?.wardName}, </span>
-          <span>{defaultAddress?.districtName}, </span>
-          <span>{defaultAddress?.provinceName}</span>
+          <span>{selectedAddress?.homeAddress}, </span>
+          <span>{selectedAddress?.wardName}, </span>
+          <span>{selectedAddress?.districtName}, </span>
+          <span>{selectedAddress?.provinceName}</span>
         </div>
       </div>
     </div>

@@ -1,19 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import Edit3 from "../../assets/svg/Edit3";
 import PlusSquare from "../../assets/svg/PlusSquare";
-import { setIsChanging } from "../../redux/slice/checkOut.slice";
+import { useEffect, useState } from "react";
+import { setSelectedAddress } from "../../redux/slice/checkOut.slice";
 
-export const ChangeAddressPage = () => {
-  const { addressList } = useSelector((state) => state.checkOut);
+export const ChangeAddressPage = ({ setIsChanging, setChangeAddress }) => {
+  const { addressList, selectedAddress } = useSelector((state) => state.checkOut);
   const dispatch = useDispatch();
 
   return (
     <>
-      <h3 className="text-center py-4 font-semibold text-red-500 text-xl">Thay đổi địa chỉ</h3>
+      <div className=" xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center mb-4">
+        <h3 className="text-start  py-2 font-semibold  text-xl pl-4">Thay đổi địa chỉ</h3>
+      </div>
       {addressList?.map((address) => {
         return (
           <div
-            className="py-4 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center"
+            className="py-4 mt-2 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center"
             key={address._id}
           >
             <div className="text-[15px] flex opacity-70 mx-8">
@@ -23,6 +26,8 @@ export const ChangeAddressPage = () => {
                   type="checkbox"
                   name="delivery"
                   readOnly
+                  checked={selectedAddress?._id === address?._id}
+                  onClick={() => dispatch(setSelectedAddress(address))}
                 />
               </div>
               <div className="grow">
@@ -45,13 +50,23 @@ export const ChangeAddressPage = () => {
           </div>
         );
       })}
-      <div
-        className="py-4 xl:max-w-[1100px] mt-4 cursor-pointer lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center"
-        onClick={() => dispatch(setIsChanging(true))}
-      >
-        <div className="flex justify-center opacity-60">
-          <PlusSquare></PlusSquare>
-          <span className="ml-2">Thêm địa chỉ nhận hàng</span>
+      <div className="flex xl:max-w-[1100px] mt-8 lg:max-w-[900px] md:max-w-[750px] mx-auto">
+        <div
+          className=" bg-white w-6/12 rounded shadow-center py-4 cursor-pointer mr-2"
+          onClick={() => setIsChanging(true)}
+        >
+          <div className="opacity-60 flex justify-center">
+            <PlusSquare></PlusSquare>
+            <span className="ml-2">Thêm địa chỉ nhận hàng</span>
+          </div>
+        </div>
+        <div
+          className=" bg-red-600 w-6/12 rounded  shadow-center py-4 cursor-pointer ml-2"
+          onClick={() => setChangeAddress(false)}
+        >
+          <div className=" flex justify-center ">
+            <span className="ml-2 text-white font-bold">Tiếp tục</span>
+          </div>
         </div>
       </div>
     </>

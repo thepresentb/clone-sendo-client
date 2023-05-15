@@ -79,7 +79,7 @@ export const Navbar = () => {
               ></path>
             </svg>
             {bag?.length !== 0 ? (
-              <div className="absolute rounded-full w-[22px] border-[2px] border-red-600 bg-white top-[-8px] left-[14px] pl-[6px] text-[11px]">
+              <div className="absolute rounded-full w-[24px] border-[2px] border-red-600 bg-white top-[-8px] left-[14px] pl-[7px] text-[14px] font-semibold">
                 {bag?.length}
               </div>
             ) : null}
