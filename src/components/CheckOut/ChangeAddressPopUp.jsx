@@ -5,6 +5,7 @@ import ChevronDown from "../../assets/svg/ChevornDown";
 import { ToastContainer, toast } from "react-toastify";
 import toastConfig from "../../utils/toastifyConfig";
 import { checkOutApi } from "../../redux/apiRequest/checkOut.api";
+import { setEditingAddress } from "../../redux/slice/checkOut.slice";
 
 const CODENAME = {
   receiver: "người nhận",
@@ -17,6 +18,7 @@ const CODENAME = {
 
 export const ChangeAddressPopUp = ({ setIsChanging }) => {
   const { user } = useSelector((state) => state.user);
+  const { editingAddress } = useSelector((state) => state.checkOut);
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
@@ -71,6 +73,19 @@ export const ChangeAddressPopUp = ({ setIsChanging }) => {
       setProvinces(provinceList);
     };
     getProvince();
+    // khi popup la trang edit
+    if (editingAddress) {
+      if (editingAddress.isDefault === true) document.getElementById("isDefault").checked = true;
+      setAddressInfo({
+        ...addressInfo,
+        receiver: editingAddress.receiver,
+        phoneNumber: editingAddress.phoneNumber,
+        homeAddress: editingAddress.homeAddress,
+      });
+    }
+    return () => {
+      dispatch(setEditingAddress(null));
+    };
   }, []);
 
   return (
@@ -194,7 +209,7 @@ export const ChangeAddressPopUp = ({ setIsChanging }) => {
                   className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   onClick={handleSubmit}
                 >
-                  Thêm địa chỉ
+                  Xác nhận
                 </button>
               </form>
             </div>

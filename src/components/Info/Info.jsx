@@ -34,7 +34,7 @@ export const Info = () => {
 
   return (
     <div className="mt-[70px] sm:mt-[100px] bg-slate-100">
-      <div className="xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
+      <div className="xl:max-w-[1308px] lg:max-w-[900px] md:max-w-[750px] mx-auto">
         <div className="hidden sm:block opacity-80 text-sm py-4">
           <a href="/">sendo.vn</a>
           <span className="mx-2">/</span>

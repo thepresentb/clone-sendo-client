@@ -12,3 +12,22 @@ export const SEARCHTOP = [
   "Xe Máy, Oto, Xe Đạp",
   "Hàng quốc tế",
 ];
+
+export const FOOTERSEARCH = [
+  "Đồng Hồ",
+  "SHOPPING Mall",
+  "Thế Giới Di Động",
+  "Bánh Trung Thu Kinh Đô",
+  "Black Friday",
+  "Tivi",
+  "Mỹ phẩm hàn quốc",
+  "Kem chống nắng",
+  "Chợ Tốt",
+  "Shopee",
+  "Corona Virus",
+  "Đồ chơi nấu ăn",
+  "Laptop",
+  "iPhone 6",
+  "Bàn phím cơ",
+  "Quạt",
+];

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isCheckOutPage: false,
   selectedAddress: null,
+  editingAddress: null,
   addressList: [],
 };
 
@@ -16,6 +17,9 @@ const checkOutSlice = createSlice({
     setSelectedAddress(state, action) {
       state.selectedAddress = action.payload;
     },
+    setEditingAddress(state, action) {
+      state.editingAddress = action.payload;
+    },
     addAddressList(state, action) {
       state.addressList = action.payload;
       const defaultAddress = action.payload?.filter((address) => address.isDefault === true);
@@ -24,6 +28,6 @@ const checkOutSlice = createSlice({
   },
 });
 
-export const { setIsCheckOutPage, setSelectedAddress, addAddressList } = checkOutSlice.actions;
+export const { setIsCheckOutPage, setSelectedAddress, addAddressList, setEditingAddress } = checkOutSlice.actions;
 
 export default checkOutSlice.reducer;

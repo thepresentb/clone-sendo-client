@@ -25,7 +25,7 @@ export const Filter = () => {
   };
   return (
     <div className="relative" onMouseEnter={handleHoverFilter} onMouseLeave={() => handleHoverFilter(true)}>
-      <div className="sm:mt-4 mt-[14px] sm:ml-10 mx-1 sm:mr-4 cursor-pointer hover:opacity-80">
+      <div className="sm:mt-4 mt-[14px] sm:ml-[30px] mx-1 sm:mr-4 cursor-pointer hover:opacity-80">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

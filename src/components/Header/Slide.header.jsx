@@ -11,7 +11,7 @@ export const SlideHeader = () => {
 
   return (
     <div
-      className={`flex flex-col sm:mt-[140px] mt-[180px] mb-8 xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] sm:mx-auto ${
+      className={`flex flex-col sm:mt-[140px] mt-[180px] mb-8 xl:max-w-[1308px] lg:max-w-[900px] md:max-w-[750px] sm:mx-auto ${
         isCategoryPage || selectedProduct || isBagPage || isCheckOutPage ? "hidden" : null
       } `}
     >
@@ -49,15 +49,15 @@ const SectionItem = ({ itemDetail }) => {
   };
 
   return (
-    <div className="w-[20%] sm:w-[100px] sm:m-[5px] p-2 sm:p-[10px] bg-white hover:scale-110">
+    <div className="w-[20%] sm:w-[120px] sm:m-[5px] p-2 sm:p-[10px] bg-white hover:scale-110">
       <Link to="category" onClick={() => setFilterStore(itemDetail._id)}>
         <img
           data-src={itemDetail.imgUrl}
           src={itemDetail.imgUrl}
           alt="shortcut-block"
-          className="w-[38px] sm:w-[44px] m-auto sm:mx-[17px] sm:mt-4"
+          className="w-[38px] sm:w-[50px] m-auto sm:ml-[25px] sm:mt-4"
         />
-        <div className=" text-[11px] sm:text-xs text-center mt-2 sm:mt-4">{itemDetail.name}</div>
+        <div className=" text-[11px] sm:text-sm text-center mt-2 sm:mt-4">{itemDetail.name}</div>
       </Link>
     </div>
   );

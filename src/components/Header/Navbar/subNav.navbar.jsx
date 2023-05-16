@@ -12,7 +12,7 @@ export const SubNav = () => {
 
   return (
     <div
-      className={`xl:max-w-[1100px] mt-[13px] sm:mt-0 lg:max-w-[900px] md:max-w-[750px] mx-auto ${
+      className={`xl:max-w-[1308px] mt-[13px] sm:mt-[6px] lg:max-w-[900px] md:max-w-[750px] mx-auto ${
         isCategoryPage || selectedProduct || isBagPage || isCheckOutPage ? "hidden" : ""
       } `}
     >

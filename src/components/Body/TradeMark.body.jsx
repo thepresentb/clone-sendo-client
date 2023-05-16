@@ -4,7 +4,7 @@ import { BODYSLIDE } from "../../data/bodySlide";
 
 export const TradeMark = () => {
   return (
-    <div className="mx-auto relative bg-white rounded-md xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px]">
+    <div className="mx-auto relative mt-4 bg-white rounded-md xl:max-w-[1308px] lg:max-w-[900px] md:max-w-[750px]">
       <div className="flex p-6">
         <div className="flex grow">
           <div className="mr-2 sm:mr-4">

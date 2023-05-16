@@ -31,7 +31,7 @@ export const CheckOut = () => {
     <div className="mt-[100px] bg-slate-100 pb-4">
       {!changeAddress ? (
         <>
-          <div className=" xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center mb-4">
+          <div className=" xl:max-w-[1308px] lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center mb-4">
             <h3 className="text-start  py-2 font-semibold  text-xl pl-4">Xác nhận - Thanh toán</h3>
           </div>
           <Address setChangeAddress={setChangeAddress}></Address>

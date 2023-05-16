@@ -28,7 +28,7 @@ export const Filter = () => {
 
   return (
     <div
-      className={`filter-cate shadow-center fixed h-[90vh] overflow-y-auto  top-[185px]  w-[210px] bg-white rounded-md `}
+      className={`filter-cate  fixed h-[90vh] overflow-y-auto scroll-thin  top-[185px]  w-[210px] bg-white rounded-lg `}
     >
       <CategoryDetail />
       <Price />

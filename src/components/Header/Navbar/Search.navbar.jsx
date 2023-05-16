@@ -3,6 +3,8 @@ import { SEARCHTOP } from "../../../data/searchTop";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../../redux/slice/category.slice";
 import { redirect, useNavigate } from "react-router-dom";
+import { HideIcon } from "../../Category/Filter/HideIcon.filter";
+import ChevronDown from "../../../assets/svg/ChevornDown";
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -39,10 +41,10 @@ export const Search = () => {
   };
 
   return (
-    <div className="w-full hidden sm:flex mx-2 my-2">
-      <div className="grow mr-1">
+    <div className="w-full hidden sm:flex my-2">
+      <div className="grow mr-1 relative">
         <input
-          className="search-navbar h-10 w-full rounded p-5 text-sm focus-visible:outline-0"
+          className="border-0 search-navbar h-10 w-full rounded p-4 text-sm focus-visible:outline-0"
           placeholder="Tìm trên Sendo"
           autoComplete="off"
           type="search"
@@ -51,6 +53,16 @@ export const Search = () => {
           onBlur={() => handlerOnfocus("out")}
           onKeyDown={handleKeydown}
         ></input>
+        <button
+          id="dropdownDelayButton"
+          className="flex absolute right-0 top-0 h-10 text-slate-700 w-[200px] rounded bg-slate-pr font-bold items-center "
+          type="button"
+        >
+          <span className="text-start grow pl-4 text-[14px]">Tất cả sản phẩm</span>
+          <div className="pr-3">
+            <ChevronDown color="black" size={24} strokeWidth="2.0" />
+          </div>
+        </button>
         <div id="search-hint" className="h-screen w-full hidden relative z-50">
           <div className="h-3/6 w-full rounded p-3 pl-6 text-sm bg-white mt-1 shadow-2xl overflow-y-auto">
             <div className="p-2 font-semibold opacity-75">Xu hướng tìm kiếm</div>

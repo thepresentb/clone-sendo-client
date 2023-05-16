@@ -59,7 +59,7 @@ export const CategoryDetail = () => {
                   </div>
                 )}
                 <span
-                  className={`overflow-x-auto whitespace-nowrap py-[2px] ml-1 mt-[2px] leading-5 grow text-sm font-medium truncate text-red-500`}
+                  className={`overflow-x-auto whitespace-nowrap py-[3px] ml-1 mt-[2px] leading-5 grow text-sm font-semibold truncate text-red-500`}
                 >
                   {item.category.name}
                 </span>

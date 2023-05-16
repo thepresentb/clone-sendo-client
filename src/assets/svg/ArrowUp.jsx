@@ -1,5 +1,5 @@
 import React from "react";
-const ChevronUp = ({ size = 13, color = "red", strokeWidth = "1.5" }) => (
+const ArrowUp = ({ size = 24, color = "black" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -7,11 +7,11 @@ const ChevronUp = ({ size = 13, color = "red", strokeWidth = "1.5" }) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke={color}
-    strokeWidth={strokeWidth}
+    strokeWidth="2.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M18 15l-6-6-6 6" />
+    <path d="M12 19V6M5 12l7-7 7 7" />
   </svg>
 );
-export default ChevronUp;
+export default ArrowUp;

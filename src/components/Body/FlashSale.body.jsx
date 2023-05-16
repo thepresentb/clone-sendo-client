@@ -31,7 +31,7 @@ export const FlashSale = () => {
   }, 1000);
 
   return (
-    <div className=" relative bg-color-flashSale max-w-[374px] mx-auto rounded-md xl:max-w-[1100px] lg:max-w-[900px] md:max-w-[750px]">
+    <div className=" relative bg-color-flashSale max-w-[374px] mx-auto rounded-md sm:mb-5 xl:max-w-[1308px] lg:max-w-[900px] md:max-w-[750px]">
       <div className="flex pt-4 px-4 sm:p-4">
         <div className="flex grow">
           <div className="mt-1">
@@ -170,7 +170,7 @@ const Silde = () => {
           })}
         </div>
       </div>
-      <div className="slider__controls hidden sm:flex top-[150px] xl:w-[1100px] lg:w-[900px] md:w-[750px]">
+      <div className="slider__controls hidden sm:flex top-[150px] xl:w-[1308px] lg:w-[900px] md:w-[750px]">
         <button type="button" className="prev shadow-center">
           <div className="btn--icon"></div>
         </button>
