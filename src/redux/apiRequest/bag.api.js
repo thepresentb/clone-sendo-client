@@ -8,6 +8,7 @@ export const bagApi = {
       res.data.data.forEach((item) => {
         item.isChose = false;
       });
+      console.log("render");
       dispatch(addBag(res.data.data));
       return null;
     }

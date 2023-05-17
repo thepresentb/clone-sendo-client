@@ -17,14 +17,14 @@ export const SearchMobile = () => {
     else navigate("/bag");
   };
 
-  useEffect(() => {
-    bagApi.getBag(dispatch, user?._id);
-  }, [user]);
+  // useEffect(() => {
+  //   bagApi.getBag(dispatch, user?._id);
+  // }, [user]);
 
   if (selectedProduct) return <></>;
 
   return (
-    <div className="sm:hidden flex">
+    <div className="sm:hidden flex w-[91%]">
       <div className={isCategoryPage ? "" : "hidden"} onClick={() => navigate("/")}>
         <svg className="svg-icon w-7 ml-3 mt-5" viewBox="0 0 20 20">
           <path
@@ -34,7 +34,7 @@ export const SearchMobile = () => {
         </svg>
       </div>
       <input
-        className={`search-navbar ${
+        className={`search-navbar border-0 ${
           isCategoryPage ? "h-[43px]" : "h-10"
         }  mx-3 grow rounded p-5 text-sm focus-visible:outline-0 ${isCategoryPage ? "mt-[13px]" : ""}`}
         placeholder="Tìm trên Sendo"

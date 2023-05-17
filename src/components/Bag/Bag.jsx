@@ -5,6 +5,8 @@ import { bagApi } from "../../redux/apiRequest/bag.api";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { Item } from "./Item.bag";
 import { StringHelper } from "../../utils/StringHelper";
+import { ToastContainer, toast } from "react-toastify";
+import toastConfig from "../../utils/toastifyConfig";
 
 export const Bag = () => {
   const { user } = useSelector((state) => state.user);
@@ -13,6 +15,17 @@ export const Bag = () => {
   const [sale, setSale] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleCheckOut = () => {
+    let cnt = 0;
+    for (let item of bag) {
+      if (item.isChose === true) cnt++;
+    }
+    if (cnt === 0) {
+      return toast.error("Chọn ít nhật 1 sản phẩm để thanh toán", toastConfig);
+    }
+    navigate("/check_out");
+  };
 
   useEffect(() => {
     let totalNew = 0;
@@ -53,7 +66,7 @@ export const Bag = () => {
 
   if (bag.length === 0) {
     return (
-      <div className="mt-[70px] sm:mt-[100px]">
+      <div className="mt-[70px] sm:mt-[94px]">
         <div className="flex flex-col justify-center items-center my-[300px]">
           <img className="w-[400px]" src="https://media3.scdn.vn/img4/2021/02_02/JikA6AqzCC55LcNmcHjZ.png" alt="" />
           <p className="font-bold mt-8">Giỏ hàng trống</p>
@@ -66,6 +79,7 @@ export const Bag = () => {
 
   return (
     <div className="mt-[70px] sm:mt-[100px] mb-10">
+      <ToastContainer />
       <div className="h-fit bg-gray-100 py-10">
         <div className="mx-auto max-w-5xl px-6 md:flex md:space-x-6 xl:px-0">
           <h1 className="mb-10 text-start text-xl font-bold">Giỏ hàng của bạn ({bag.length})</h1>
@@ -93,12 +107,12 @@ export const Bag = () => {
                 {/* <p className="text-sm text-gray-700">including VAT</p> */}
               </div>
             </div>
-            <Link
-              to="/check_out"
+            <button
+              onClick={handleCheckOut}
               className="mt-6 w-full block text-center rounded-md bg-red-500 py-1.5 font-medium text-blue-50 hover:bg-red-600"
             >
               Mua ngay
-            </Link>
+            </button>
           </div>
         </div>
       </div>

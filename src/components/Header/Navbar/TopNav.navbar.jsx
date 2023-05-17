@@ -29,43 +29,15 @@ export const TopNav = () => {
               <p className="text-slate-800 text-xs my-1">Quét để tải ứng dụng</p>
             </div>
           </div>
-          {/* <div className="flex cursor-pointer">
-            <div
-              className={`pr-2 hover:opacity-80 `}
-              onClick={() => {
-                if (user) return;
-                dispatch(toggleAuthenState("register"));
-              }}
-            >
-              {user ? user.username : "Đăng kí"}
-            </div>
-            <div className="w-[2px] bg-white h-[24px] relative top-[4px]"></div>
-            {user ? (
-              <div
-                className="pl-2 hover:opacity-80 text-[13px]"
-                onClick={() => {
-                  localStorage.removeItem("accessToken");
-                  return dispatch(addUser(null));
-                }}
-              >
-                Đăng Xuất
-              </div>
-            ) : (
-              <div
-                className="pl-2 hover:opacity-80"
-                onClick={() => {
-                  dispatch(toggleAuthenState("login"));
-                }}
-              >
-                Đăng nhập
-              </div>
-            )}
-          </div> */}
         </div>
-        {/* <div className="flex cursor-pointer"> */}
         <div className="pr-6 hover:opacity-80">Chăm sóc khách hàng</div>
         <div className="hover:opacity-80">Kiểm tra đơn hàng</div>
-        {/* </div> */}
+      </div>
+      <div className="sm:hidden h-[48px]">
+        <div
+          className="h-[48px] bg-cover bg-center"
+          style={{ backgroundImage: `url("https://media3.scdn.vn/img4/2023/01_30/Oy1UtoIkFtFYqGRWxW4n.png")` }}
+        ></div>
       </div>
     </div>
   );

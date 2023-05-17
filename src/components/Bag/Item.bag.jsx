@@ -9,6 +9,8 @@ export const Item = ({ item }) => {
   const { bag } = useSelector((state) => state.bag);
   const dispatch = useDispatch();
 
+  const index = bag.findIndex((bagItem) => bagItem._id == item._id);
+
   let saleStatus = false;
   if (
     item.productId.saleId !== null &&
@@ -20,7 +22,6 @@ export const Item = ({ item }) => {
   }
 
   const handleClickChose = () => {
-    const index = bag.findIndex((bagItem) => bagItem._id == item._id);
     const newBag = JSON.parse(JSON.stringify(bag));
     newBag[index].isChose = !item.isChose;
     console.log(newBag);
@@ -30,7 +31,6 @@ export const Item = ({ item }) => {
   const handleClickPrev = (e) => {
     e.stopPropagation();
     if (item.quantity > 1) {
-      const index = bag.findIndex((bagItem) => bagItem._id == item._id);
       const newBag = JSON.parse(JSON.stringify(bag));
       --newBag[index].quantity;
       dispatch(addBag(newBag));
@@ -40,7 +40,6 @@ export const Item = ({ item }) => {
   const handleClickIncre = (e) => {
     e.stopPropagation();
     if (item.quantity < item.productId.quantity) {
-      const index = bag.findIndex((bagItem) => bagItem._id == item._id);
       const newBag = JSON.parse(JSON.stringify(bag));
       ++newBag[index].quantity;
       dispatch(addBag(newBag));
@@ -54,11 +53,12 @@ export const Item = ({ item }) => {
 
   return (
     <div className={`justify-between mb-6 rounded-lg bg-white py-6 pl-4 pr-2 shadow-md sm:flex sm:justify-start`}>
-      <div className="flex items-center mr-4">
+      <div className="flex items-center mr-4 ml-2">
         <input
           className="w-4 h-4 text-red-600 cursor-pointer bg-gray-100 border-2 border-gray-500 rounded-sm focus:outline-none focus:ring-0 "
           type="checkbox"
           name="delivery"
+          // checked={}
           // checked={isState === "sp"}
           readOnly
           onClick={handleClickChose}

@@ -11,4 +11,9 @@ export const checkOutApi = {
     const res = await baseAxios.post("accounts/create_address", addressInfo);
     if (res.data.statusCode === 200) dispatch(addAddressList(res.data.data));
   },
+
+  async editAddress(dispatch, addressInfo) {
+    const res = await baseAxios.post("accounts/edit_address", addressInfo);
+    if (res.data.statusCode === 200) dispatch(addAddressList(res.data.data));
+  },
 };

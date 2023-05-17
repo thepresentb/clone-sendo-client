@@ -7,6 +7,8 @@ import { ShipMethod } from "./ShipMethod.checkOut";
 import { ChangeAddressPage } from "./ChangeAddressPage";
 import { ChangeAddressPopUp } from "./ChangeAddressPopUp";
 import { checkOutApi } from "../../redux/apiRequest/checkOut.api";
+import { PaymentMethod } from "./PaymentMethod.checkOut";
+import { Info } from "./Info.checkOut";
 
 export const CheckOut = () => {
   const [changeAddress, setChangeAddress] = useState(false);
@@ -28,7 +30,7 @@ export const CheckOut = () => {
   }, [user]);
 
   return (
-    <div className="mt-[100px] bg-slate-100 pb-4">
+    <div className="mt-[94px] bg-slate-100 pb-4">
       {!changeAddress ? (
         <>
           <div className=" xl:max-w-[1308px] lg:max-w-[900px] md:max-w-[750px] mx-auto bg-white rounded shadow-center mb-4">
@@ -36,6 +38,8 @@ export const CheckOut = () => {
           </div>
           <Address setChangeAddress={setChangeAddress}></Address>
           <ShipMethod></ShipMethod>
+          <PaymentMethod></PaymentMethod>
+          <Info />
         </>
       ) : (
         <ChangeAddressPage setIsChanging={setIsChanging} setChangeAddress={setChangeAddress} />

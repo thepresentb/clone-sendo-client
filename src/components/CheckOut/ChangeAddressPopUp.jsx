@@ -58,11 +58,20 @@ export const ChangeAddressPopUp = ({ setIsChanging }) => {
         return toast.error(`Vui lòng điền thông tin ${CODENAME[key]}`, toastConfig);
       }
     }
-    await checkOutApi.createAddress(dispatch, {
-      ...addressInfo,
-      accountId: user._id,
-      isDefault: document.getElementById("isDefault").checked === true,
-    });
+    if (editingAddress) {
+      await checkOutApi.editAddress(dispatch, {
+        ...addressInfo,
+        _id: editingAddress._id,
+        accountId: user._id,
+        isDefault: document.getElementById("isDefault").checked,
+      });
+    } else {
+      await checkOutApi.createAddress(dispatch, {
+        ...addressInfo,
+        accountId: user._id,
+        isDefault: document.getElementById("isDefault").checked === true,
+      });
+    }
     setShowUl(null);
     setIsChanging(false);
   };
@@ -76,6 +85,7 @@ export const ChangeAddressPopUp = ({ setIsChanging }) => {
     // khi popup la trang edit
     if (editingAddress) {
       if (editingAddress.isDefault === true) document.getElementById("isDefault").checked = true;
+
       setAddressInfo({
         ...addressInfo,
         receiver: editingAddress.receiver,
@@ -193,13 +203,19 @@ export const ChangeAddressPopUp = ({ setIsChanging }) => {
                       <input
                         id="isDefault"
                         type="checkbox"
+                        onClick={() => {
+                          if (editingAddress && editingAddress.isDefault === true) {
+                            document.getElementById("isDefault").checked = true;
+                            toast.error(`Cần có ít nhất 1 địa chỉ là địa chỉ mặc định`, toastConfig);
+                          }
+                        }}
                         className="bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                         required=""
                       />
                     </div>
                     <div className="text-sm ml-3">
                       <label htmlFor="isDefault" className="font-medium text-gray-900 dark:text-gray-300">
-                        Đăt làm địa chỉ mặc định
+                        Địa chỉ mặc định
                       </label>
                     </div>
                   </div>
